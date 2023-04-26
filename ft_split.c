@@ -12,22 +12,10 @@
 
 #include "libft.h"
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
-int	c_count(const char *s, char c)
-{
-	int	count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s == c)
-			count++;
-		s++;
-	}
-	return (count);
-}
-
+/*
 int	s_max(const char *s, char c)
 {
 	int	max;
@@ -52,23 +40,23 @@ int	s_max(const char *s, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	int		arr_len;
+	int		*words;
 	int		max;
 	int		i;
 	int		j;
 	char	**res;
 	char	*str;
 
-	arr_len = c_count(s, c);
+	words = find_words((char *)s, c);
 	max = s_max(s, c);
 
-	res = (char **) calloc (arr_len + 1, max + 1);
+	res = (char **) calloc (arr_len + 1, 5);
 	if (res == NULL)
 		return (NULL);
 	
 	i = 0;
 	j = 0;
-	while ((s + i) < ft_strchr((s + i), c))
+	while ((s + i) < strchr((s + i), c))
 	{
 		if (*(s + i) == c)
 		{
@@ -81,21 +69,120 @@ char	**ft_split(const char *s, char c)
 		i++;
 		j++;
 	}
-	*(res + arr_len) = NULL;
+//	*(res + arr_len) = NULL;
 	return (res);
+}
+*/
+
+
+char	*ft_shift(char *s)
+{
+	char	*tmp;
+	int		i;
+
+	if (ft_strlen(s) == 0)
+		return (s);
+
+	tmp = (char *) malloc (sizeof(char) * ft_strlen(s));
+	if (tmp == NULL)
+		return (NULL);
+	
+	if (ft_strlen(s) < 2)
+	{
+		*(tmp) = '\0';
+		free(s);
+		return (tmp);
+	}
+
+	i = 1;
+	while (*(s + i))
+	{
+		*(tmp + i - 1) = *(s + i);
+		i++;
+	}
+	*(tmp + i - 1) = '\0';
+	free(s);
+	return (tmp);
+}
+
+char	*ft_clean_string(char *s, char c)
+{
+	int	i;
+	int	j;
+
+	while (*s == c)
+		s = ft_shift(s);
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c && s[i + 1] == c)
+		{
+			ft_memmove(&s[i], &s[i + 1], (ft_strlen(s) - i));
+		}
+		else
+			i++;
+	}
+	if (s[i - 1] == c)
+	{
+		*(s + i - 1) = '\0';
+	}
+	printf ("C: %s", s);
+	printf (".\n");
+	return (s);
+}
+
+int *ft_find_words(char *s, char c)
+{
+	char	*dup;
+	int		*words;
+	int		i;
+	int		j;
+
+	dup = strdup(s);
+	dup = ft_clean_string(dup, c);
+	printf ("B: %s", dup);
+	printf (".\n");
+
+	words = (int *) malloc ((j + 2) * sizeof(int));
+	if (words == NULL)
+		return (NULL);
+	
+	i = 0;
+	j = 0;
+	while (*(dup + i))
+	{
+		if (*(dup + i) == c)
+		{
+			*(words + j) = i;
+			j++;
+		}
+		i++;
+	}
+	*(words + j) = 0;
+	free(dup);
+	return (words);
 }
 
 int	main(void)
 {
-	char	s1[] = "Hola que tal";
-	char	**res;
+	char	s1[] = "   Hola todo    ?!        ";
+	int		*res;
 	int		i;
+	char	c = ' ';
 
-	res = ft_split(s1, ' ');
-	i = 0;
-	while (*(res + i))
+	printf ("A: %s", s1);
+	printf (".\n");
+	res = ft_find_words(s1, c);
+	if (res == NULL)
 	{
-		printf ("%s", *(res + i));
+		printf ("FAIL");
+		return (1);
+	}
+	i = 0;
+	while (res[i])
+	{
+		printf ("%d\n", res[i]);
 		i++;
 	}
 	return (0);

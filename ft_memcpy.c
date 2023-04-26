@@ -1,25 +1,21 @@
-/*
-#include <stdio.h>
-#include <stddef.h>
-#include <string.h>
-*/
+#include "libft.h"
 
-void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
+void  *ft_memcpy(void *restrict dest, const void *restrict src, t_size_t n)
 {
-	char	*c_dest;
-	char	*c_src;
-	size_t	i;
+	char	  *c_dest;
+	const char   *c_src;
+	t_size_t	i;
 
-	c_dest = (char *) dest;
-	c_src = (char *) src;
-	i = 0;
-	while (i < n)
+	c_dest = dest;
+	c_src = src;
+	while (n)
 	{
-		*(c_dest + i) = *(c_src + i);
-		i++;
+		*c_dest = *c_src;
+		c_dest++;
+		c_src++;
+		n--;
 	}
 	return (dest);
-}
 
 /*
 int	main(void)

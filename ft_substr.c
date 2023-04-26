@@ -1,15 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, t_size_t len)
 {
 	unsigned char	*sub;
-	int		i;
+	t_size_t		i;
 
 	sub = (char *) malloc (sizeof(char) * len);
 	if (sub == NULL)
 		return (NULL);
+
 	i = 0;
 	while (i < len && (unsigned char)*(s + start + i))
 	{
@@ -19,6 +18,11 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	*(sub + i) = '\0';
 	return (sub);
 }
+
+/* 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int main() {
     char *str = "Hola mundo!";
@@ -31,3 +35,4 @@ int main() {
 
     return 0;
 }
+*/
