@@ -6,41 +6,40 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:04:27 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/20 19:41:10 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/04/27 21:55:06 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-#include "ft_strlen.c"
-#include <stdio.h>
-*/
 
-int	ft_strlcpy(char *dst, const char *src, int size)
+t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size)
 {
-	ft_size_t i;
+	t_size_t	i;
 
+	if (size == 0)
+		return (0);
 	i = 0;
 	while (src[i] && i < size - 1)
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	dest[i] = '\0';
 	return (i);
 }
 
 /*
+TESTEAR CON UN ARGUEMENTO
 int	main(int ac, char **av)
 {
-	char 	*s1 = av[1];
-	char	s2[20];
-	int		retorno;
+	char 		*s1 = av[1];
+	char		s2[20];
+	t_size_t	retorno;
 
-	retorno = ft_strlcpy(s2, s1, (ft_size_t)ft_strlen(s1) + 1);
+	retorno = ft_strlcpy(s2, s1, (t_size_t)ft_strlen(s1) - 1);
 
 	printf ("original: %s\n", s1);
-	printf ("copia: %s \nretorno: %d\n", s2, retorno);
+	printf ("copia: %s \nretorno: %lu\n", s2, retorno);
 	return (0);
 }
 */
