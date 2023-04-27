@@ -1,9 +1,14 @@
 #ifndef LIBFT_h
 # define LIBFT_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 typedef unsigned long	t_size_t;
 
 char	*ft_substr(const char *s, unsigned int start, t_size_t len);
+char	*ft_shift(char *s);
 
 int		ft_strlen(char *str);
 

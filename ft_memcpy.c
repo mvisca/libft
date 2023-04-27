@@ -16,7 +16,7 @@ void  *ft_memcpy(void *restrict dest, const void *restrict src, t_size_t n)
 		n--;
 	}
 	return (dest);
-
+}
 /*
 int	main(void)
 {
