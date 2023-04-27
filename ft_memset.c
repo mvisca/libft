@@ -1,56 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 10:48:37 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/19 19:40:15 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/19 20:25:00 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <stdio.h>
+// El man indica usar size_t para len, pero da error de compilacion.
+// Puedo definir un:
+// 		typedef unsigned long size_t;
+// A valorar...
 
-int	ft_isdigit(char c)
-{
-	if (c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	return (0);
-}
-*/
-
-int	ft_atoi(const char *nptr)
+void	*ft_memset(void *b, int c, int len)
 {
 	int	i;
-	int	n;
-	int	neg;
+	int	len_uchars;
 
-	if (nptr == NULL)
-		return (0);
-	neg = 1;
-	if (*(nptr) == '-')
-	{
-		neg = -1;
-		nptr++;
-	}
-	n = 0;
+	len_uchars = len / sizeof(unsigned char);
 	i = 0;
-	while (*(nptr + i) && ft_isdigit(*(nptr + i)))
+	while (i < len_uchars)
 	{
-		n = (n * 10) + *(nptr + i) - '0';
+		*((unsigned char*) b + i) = (unsigned char) c;
 		i++;
 	}
-	return (n * neg);
+	return (b);
 }
 
-/*
-int	main(int ac, char **av)
+#include <stdio.h>
+int	main(void)
 {
-	printf ("%d", ft_atoi(av[1]));
+	char b[] = "HolaHolaHola";
+
+	printf ("%s", ft_memset(b, '\n', sizeof(unsigned char) * 3));
 	return (0);
 }
-*/

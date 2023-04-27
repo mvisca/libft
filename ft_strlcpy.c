@@ -1,55 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 16:08:09 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/20 16:20:51 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/20 19:04:27 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/20 19:41:10 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 /*
-#include <unistd.h>
+#include "ft_strlen.c"
+#include <stdio.h>
 */
 
-#include "libft.h"
-
-void	bzero(void *s, ft_size_t n)
+int	ft_strlcpy(char *dst, const char *src, int size)
 {
-	int	 i;
-	char	*ptr;
-
-	ptr = (char*) s;
-	while (i < n)
-		*(ptr + i++) = '\0';
-}
-
-void	show(char *str, int n)
-{
-	int i;
+	ft_size_t i;
 
 	i = 0;
-	while (i < n)
+	while (src[i] && i < size - 1)
 	{
-		if (*(str + i) == '\0')
-			write (1, "0", 1);
-		else
-			write (1, (str + i), 1);
+		dst[i] = src[i];
 		i++;
 	}
+	dst[i] = '\0';
+	return (i);
 }
 
 /*
-int	 main(void)
+int	main(int ac, char **av)
 {
-	char	str[] = "Hola Hola sigo probando";
+	char 	*s1 = av[1];
+	char	s2[20];
+	int		retorno;
 
-	show(str, 23);
-	bzero(&str, 20);
-	write (1, "\n", 1);
-	show(str, 23);
+	retorno = ft_strlcpy(s2, s1, (ft_size_t)ft_strlen(s1) + 1);
+
+	printf ("original: %s\n", s1);
+	printf ("copia: %s \nretorno: %d\n", s2, retorno);
 	return (0);
 }
 */

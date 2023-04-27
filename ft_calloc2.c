@@ -9,11 +9,11 @@ void free_all(size_t i, void **ptr)
 	j = 0;
 	while (j < i)
 	{
-		if (*(ptr + i) != NULL)
-			free(*(ptr + j));
+	free(*(ptr + j));
 		j++;
 	}
 	free(ptr);
+	ptr = NULL;
 }
 
 void *ft_calloc(size_t nmemb, size_t size)

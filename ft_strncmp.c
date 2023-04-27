@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 17:37:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 17:37:14 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/24 18:20:20 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/24 18:20:52 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, ft_size_t n)
 {
-	int i;
+	ft_size_t	i;
 
-	i = ft_strlen(s);
-	while (i >= 0)
-	{
-		if (*(s + i) == c)
-			return (s + i);
-		i--;
-	}
-	return (NULL);
+	i = 0;
+	while (i < n && s1[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned int)s1[i] - (unsigned int)s2[i]);
 }

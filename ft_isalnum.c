@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   isalnum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 17:37:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 17:37:14 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/19 14:19:56 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/20 18:11:08 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	int i;
+#include "isalpha.c"
+#include "isdigit.c"
 
-	i = ft_strlen(s);
-	while (i >= 0)
+int	isalnum(int	c)
+{
+	if (isalpha(c) || isdigit(c))
 	{
-		if (*(s + i) == c)
-			return (s + i);
-		i--;
+		return (1);
 	}
-	return (NULL);
+	return (0);
 }

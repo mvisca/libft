@@ -1,6 +1,21 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/25 11:21:55 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/25 11:22:38 by mvisca-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+
+/*
+#include <stdio.h>
 #include <string.h>
+*/
 
 int	ft_strlen(char *str)
 {
@@ -37,7 +52,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (new);
 }
 
-
+/*
 int main() {
     char str1[] = "Hello ";
     char str2[] = "World";
@@ -49,3 +64,4 @@ int main() {
 
     return 0;
 }
+*/

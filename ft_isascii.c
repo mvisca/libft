@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   isascii.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 17:37:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 17:37:14 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/19 16:35:02 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/19 16:46:20 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+int	isascii(int c)
 {
-	int i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	if (c >= 0 && c <= 127)
 	{
-		if (*(s + i) == c)
-			return (s + i);
-		i--;
+		return (1);
 	}
-	return (NULL);
+	return (0);
 }

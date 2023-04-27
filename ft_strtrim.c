@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/25 11:23:46 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/25 11:26:18 by mvisca-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+#include "libft.h"
+/*
 #include <string.h>
 #include <stdio.h>
+*/
 
 // USAR LIBRERIAS PROPIAS
 
@@ -12,14 +27,14 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		len_s1;
 	int		i;
 
-	len_set = strlen(set);
-	len_s1 = strlen(s1);
+	len_set = ft_strlen(set);
+	len_s1 = ft_strlen(s1);
 	
 	res = (char *) malloc (sizeof(char) * len_s1 - len_set + 1);
 	if (res == NULL)
 		return (NULL);
 	
-	ini = strstr(s1, set);
+	ini = ft_strstr(s1, set);
 	i = 0;
 	while ((s1 + i) < (s1 + len_s1 - len_set))
 	{

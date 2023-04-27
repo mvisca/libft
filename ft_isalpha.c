@@ -1,56 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 10:48:37 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/19 11:51:49 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/20 18:15:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <stdio.h>
+// Helper functions prototyping
 
-int	ft_isdigit(char c)
+static int	isupper(int	c);
+static int	islower(int	c);
+
+// Main function
+
+int	isalpha(int	c)
 {
-	if (c >= '0' && c <= '9')
+	if (isupper(c) || islower(c))
 	{
 		return (1);
 	}
 	return (0);
 }
-*/
 
-int	ft_atoi(const char *nptr)
+// Helper functions definition
+
+static int	isupper(int	c)
 {
-	int	i;
-	int	n;
-	int	neg;
-
-	if (nptr == NULL)
-		return (0);
-	neg = 1;
-	if (*(nptr) == '-')
+	if (c >= 'A' && c <= 'Z')
 	{
-		neg = -1;
-		nptr++;
+		return (1);
 	}
-	n = 0;
-	i = 0;
-	while (*(nptr + i) && ft_isdigit(*(nptr + i)))
-	{
-		n = (n * 10) + *(nptr + i) - '0';
-		i++;
-	}
-	return (n * neg);
-}
-
-/*
-int	main(int ac, char **av)
-{
-	printf ("%d", ft_atoi(av[1]));
 	return (0);
 }
-*/
+
+static int	islower(int	c)
+{
+	if (c >= 'a' && c <= 'z')
+	{
+		return (1);
+	}
+	return (0);
+}
