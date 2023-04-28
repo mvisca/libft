@@ -38,12 +38,15 @@ void	*ft_memmove(void *dest, const void *src, t_size_t n)
 		d_minor_s(&i, &end, n, &delta);
 	else
 		s_minor_d(&i, &end, n, &delta);
-	while (i != end)
+	while (i != end + delta)
 	{
 		((char *)dest)[i] = *(((char *) src) + i);
 		i += delta;
 	}
+<<<<<<< HEAD
 	((char *)dest)[i] = *(((char *) src) + i);
+=======
+>>>>>>> 97ceb82b5bc3b8f14ef9c508d9304112ce76417f
 	return (dest);
 }
 
