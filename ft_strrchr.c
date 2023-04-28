@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchar.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 18:17:41 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/28 18:13:33 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/28 20:17:25 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/28 20:17:47 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,30 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		len;
+	int		i;
 	char	*str;
 
-	len = ft_strlen(s);
-	while (len >= 0)
+	str = (char *) s;
+	i = ft_strlen(str);
+	while (i >= 0)
 	{
-		if (*(s + len) == c)
+		if (*(str + i) == (char) c)
 		{
-			return (s + len);
+			return (str + i);
 		}
-		len--;
+		i--;
 	}
 	return (NULL);
 }
+
+/*
+int     main(void)
+{
+        char    str[] = "Hola aqui";
+        char    c = '\0';
+
+        printf ("%s\n", ft_strrchr(str, c));
+        printf ("%s\n", strrchr(str, c));
+        return (0);
+}
+*/
