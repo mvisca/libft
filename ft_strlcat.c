@@ -6,23 +6,15 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:42:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/20 21:15:53 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:29:57 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_strlen.c"
 #include "libft.h"
 
-/*
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-*/
-
-int	ft_strlcat(char *dst, const char *src, ft_size_t size)
+int	ft_strlcat(char *dst, const char *src, t_size_t size)
 {
-	ft_size_t	s;
+	t_size_t	s;
 	int			len_dst;
 	int			return_value;
 
