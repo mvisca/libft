@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:55:11 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/28 17:49:12 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/04/28 19:38:47 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ void	*ft_memmove(void *dest, const void *src, t_size_t n)
 		((char *)dest)[i] = *(((char *) src) + i);
 		i += delta;
 	}
-<<<<<<< HEAD
-	((char *)dest)[i] = *(((char *) src) + i);
-=======
->>>>>>> 97ceb82b5bc3b8f14ef9c508d9304112ce76417f
 	return (dest);
 }
 
@@ -54,21 +50,26 @@ void	*ft_memmove(void *dest, const void *src, t_size_t n)
 // d < s mv de d[0] -> d[n]
 // s < d mv de d[n] -> d[0]
 
+/*
 int	main(void)
 {
-	char s1[] = "01234567890abcdef";
-	char s2[] = "01234567890abcdef";
+	char 	s1[] = "01234567890abcdef";
+	char 	s2[] = "01234567890abcdef";
+	int		a = 5;
+	int		b = 2;
+	int		l = 4;
 
 //	printf ("ORIGINAL=%s\n", s1);
-	ft_memmove(&s1[1], &s1[5], 7);
+	ft_memmove(&s1[a], &s1[b], l);
 
 	printf ("MODIFIED=%s\n", s1);
 
 	printf ("La de string.h\n");
 	
 //	printf ("ORIGINAL=%s\n", s2);
-	memmove(&s2[1], &s2[5], 7);
+	memmove(&s2[a], &s2[b], l);
 
 	printf ("MODIFIED=%s\n", s2);
 	return (0);
 }
+*/
