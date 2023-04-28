@@ -10,47 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_strlen.c"
 #include "libft.h"
-
-/*
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdio.h>
 #include <string.h>
-*/
 
-int	ft_strlcat(char *dst, const char *src, ft_size_t size)
+
+t_size_t	ft_strlcat(char *dest, const char *src, t_size_t size)
 {
-	ft_size_t	s;
-	int			len_dst;
-	int			return_value;
+	t_size_t	i;
+	int			len_dest;
+	int			len_src;
 
-	return_value = ft_strlen((char *)src);
-	len_dst = ft_strlen(dst);
+	len_src = ft_strlen((char *)src);
+	len_dest = ft_strlen(dest);
 	if (size == 0)
-		return (return_value);
-	else if (size < len_dst)
-		return (return_value + size);
+		return (len_src);
+	else if (size < len_dest)
+		return (len_src + size);
 	else
-		return_value += len_dst;
-	s = 0;
-	while (src[s] && (len_dst + s) < size - 1)
+		len_src += len_dest;
+	i = 0;
+	while (src[i] && (len_dest + i) < size - 1)
 	{
-		dst[len_dst + s] = src[s];
-		s++;
+		dest[len_dest + i] = src[i];
+		i++;
 	}
-	dst[len_dst + s] = '\0';
-	return (return_value);
+	dest[len_dest + i] = '\0';
+	return (len_src);
 }
 
-/*
 int	main(int ac, char **av)
 {
 	char 	*s1 = av[1];
 	char	s2[30] = "hola ";
 	char	s3[30] = "hola ";
-	int		retorno;
+	t_size_t		retorno;
 
 	system("clear");
 	retorno = ft_strlcat(s2, s1, atoi(av[2]));
@@ -65,4 +58,3 @@ int	main(int ac, char **av)
 
 	return (0);
 }
-*/

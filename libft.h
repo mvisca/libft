@@ -27,6 +27,8 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isdigit(int c);
 
+
+t_size_t	ft_strlcat(char *dest, const char *src, t_size_t size);
 t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size);
 t_size_t	ft_strlen(char *str);
 
