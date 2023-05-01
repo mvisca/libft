@@ -19,7 +19,9 @@
 
 typedef unsigned long	t_size_t;
 
+char		*ft_itoa(int n);
 char		*ft_shift(char *s);
+char		*ft_split(const char *s, char c);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
@@ -41,7 +43,7 @@ t_size_t	ft_strlcat(char *dest, const char *src, t_size_t size);
 t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size);
 t_size_t	ft_strlen(char *str);
 
-void		*ft_bzero(void *s, t_size_t n);
+void		ft_bzero(void *s, t_size_t n);
 void		*ft_calloc(t_size_t nmemb, t_size_t size);
 void		*ft_memcpy(void *dest, const void *src, t_size_t n);
 void		*ft_memcmp(const void *s1, const void *s2, t_size_t n);

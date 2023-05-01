@@ -70,7 +70,7 @@ static char	*clean_str(char *s, char c)
 	return (scpy);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char		**res;
 	char		*dup;
