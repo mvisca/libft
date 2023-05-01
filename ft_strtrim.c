@@ -10,51 +10,71 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-/*
-#include <string.h>
-#include <stdio.h>
-*/
 
-// USAR LIBRERIAS PROPIAS
-
-char	*ft_strtrim(const char *s1, const char *set)
+static char	*alloc_res(const char *s1, const char *set)
 {
-	char	*res;
-	char	*ini;
-	int		len_set;
-	int		len_s1;
-	int		i;
+	char		*res;
+	t_size_t	aux;
 
-	len_set = ft_strlen(set);
-	len_s1 = ft_strlen(s1);
-	
-	res = (char *) malloc (sizeof(char) * len_s1 - len_set + 1);
+	aux = ft_strlen((char *) s1) - ft_strlen((char *) set);
+	res = (char *) malloc (sizeof(char) * (aux + 1));
 	if (res == NULL)
 		return (NULL);
-	
-	ini = ft_strstr(s1, set);
-	i = 0;
-	while ((s1 + i) < (s1 + len_s1 - len_set))
-	{
-		if ((s1 + i) < (ini))
-			*(res + i) = *(s1 + i);
-		else
-			*(res + i) = *(s1 + i + len_set);
-		i++;
-	}
-	*(res + i + len_set) = '\0';
 	return (res);
 }
 
+static char	*str_trim(char *s1, char *set, char *res)
+{
+	char		*rescpy;
+	char		*start;
+	char		*end;
+	t_size_t	len;
+
+	rescpy = res;
+	len = ft_strlen(s1);
+	start = ft_strnstr(s1, set, len); 
+	end = (start + ft_strlen(set));
+
+	while (*s1 != '\0')
+	{
+		if (s1 >= start && s1 < end)
+		{
+			s1++;
+			continue;
+		}
+		*rescpy++ = *s1++;
+	}
+	*rescpy = '\0';
+	return (res);
+}
+
+char	*ft_strtrim(const char *s1, const char *set)
+{
+	char		*res;
+	t_size_t	len;
+
+	len = ft_strlen((char *)s1);
+	if (ft_strnstr(s1, set, len) == NULL)
+		return ((char *)s1);
+
+	res = alloc_res(s1, set);
+	if (res == NULL)
+		return (NULL);
+	
+	res = str_trim((char *)s1, (char *)set, res);	
+	return (res);
+}
+
+/*
 int	main(void)
 {
-	char	s1[] = "Quitar quitar algo";
-	char	set[] = "quitar ";
-	char	*res;
+	char	s1[] = "Quitar quItar algo";
+	char	set1[] = "Itar";
+	char	*res1;
 
-	res = ft_strtrim(s1, set);
-	printf ("%s", res);
+	res1 = ft_strtrim(s1, set1);
+	printf ("MIA=%s\n", res1);
 	return (0);
 }
+*/

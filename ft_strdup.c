@@ -1,40 +1,44 @@
+/* ************************************************************************** */
+/*																			  */
+/*														:::	  ::::::::        */
+/*   ft_strdup.c										:+:	  :+:	:+:       */
+/*													+:+ +:+		 +:+	      */
+/*   By: mvisca-g <mvisca-g@student.42barcel>	   +#+  +:+	   +#+		      */
+/*												+#+#+#+#+#+   +#+		      */
+/*   Created: 2023/04/24 11:25:25 by mvisca-g		  #+#	#+#			      */
+/*   Updated: 2023/04/24 10:48:37 by mvisca-g		 ###   ########.fr	      */
+/*																			  */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
 	int		i;
-	int		j;
 	char	*dup;
 
-	i = 0;
-	while (*s)
-		i++;
-	dup = malloc (sizeof(char) * i);
+	dup = (char *) malloc (sizeof(char) * ft_strlen((char *) s) + 1);
 	if (dup == NULL)
 		return (NULL);
-	j = 0;
-	while (*(s + j))
+
+	i = 0;
+	while (*(s + i))
 	{
-		*(dup + j) = *(s + j);
-		j++;
+		*(dup + i) = *(s + i);
+		i++;
 	}
-	*(dup + j) = '\0';
+	*(dup + i) = '\0';
 	return (dup);
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
-int main() {
-    char *original_str = "Hola mundo";
-    char *copied_str = strdup(original_str);
-    
-    printf("La cadena original es: %s\n", original_str);
-    printf("La cadena copiada es: %s\n", copied_str);
-
-    free(copied_str);
-
-    return 0;
+int main(void) {
+	char *original_str = "Hola mundo";
+	char *copied_str = strdup(original_str);
+	
+	printf("La cadena original es: %s\n", original_str);
+	printf("La cadena copiada es: %s\n", copied_str);
+	free(copied_str);
+	return (0);
 }
 */

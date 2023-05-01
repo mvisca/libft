@@ -5,74 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 10:49:14 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 19:13:08 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/24 10:49:31 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/24 10:41:21 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-/*
-#include <stddef.h>
-#include <stdio.h>
-*/
-
-void free_all(size_t i, void **ptr)
+void free_arr(t_size_t i, void **ptr)
 {
-	while (i >= 0)
+	t_size_t j;
+
+	j = 0;
+	while (j < i)
 	{
-		free(*(ptr + i));
-		i --;
+		free(*(ptr + j));
+			j++;
 	}
 	free(ptr);
+	ptr = NULL;
 }
 
-void *ft_calloc(size_t nmemb, size_t size)
+void *ft_calloc(t_size_t nmemb, t_size_t size)
 {
 	void	**ptr;
-	size_t	i;
+	t_size_t	i;
 
 	if (nmemb * size == 0)
 		return (NULL);
-	ptr = malloc (sizeof(void *) * nmemb);
+	
+	ptr = (void **) malloc (sizeof(void *) * nmemb);
 	if (ptr == NULL)
 		return (NULL);
+
 	i = 0;
 	while (i < nmemb)
 	{
-		*(ptr + i) = malloc (size);
+		*(ptr + i) = (void *) malloc (size);
 		if (*(ptr + i) == NULL)
 		{
-			free_all(i, ptr);
+			free_arr(i, ptr);
 			return (NULL);
 		}
-		memchar(*(ptr + i), '0', size);
 		i++;
 	}
 	return (ptr);
 }
 
 /*
-int	main(void)
+int main(void)
 {
-	char	**ptr;
+	char	**cptr;
 	int		i;
 	int		j;
-	char	c;
 
-	ptr = ft_calloc (4, 10);
+	cptr = (char **) ft_calloc (4, 10);
+	if (cptr == NULL)
+	{
+		printf ("FAIL");
+		return (1);
+	}
+	
+	printf ("OK\n");
 	i = 0;
 	while (i < 4)
 	{
+		printf ("\nGO i = %d\n", i);
 		j = 0;
 		while (j < 10)
 		{
-			c = (char) ptr[i][j];
-			printf ("%c", c);
+			printf ("\nGO j = %d\n", j);
+			*(*(cptr + i) + j) = 'a' + j + i;
 			j++;
-		}
+			}
+		printf ("%s\n", *(cptr + i));
 		i++;
 	}
-	return (0);
+	free_arr(i, (void **) cptr);
+	printf ("Free done");
+    return (0);
 }
 */

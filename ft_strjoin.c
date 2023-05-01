@@ -10,45 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-/*
-#include <stdio.h>
-#include <string.h>
-*/
-
-int	ft_strlen(char *str)
+static t_size_t	get_len(char *s1, char *s2)
 {
-	int	len;
+	return (ft_strlen(s1) + ft_strlen(s2));
+}
 
-	len = 0;
-	while (*(str + len))
-		len++;
-	return (len);
+static char *alloc_str(char *s1, char *s2)
+{
+	char		*new;
+	t_size_t	len;
+
+	len = get_len(s1, s2);
+	new = (char *) malloc (sizeof(char) * len + 1);
+	if (new == NULL)
+		return (NULL);
+	return (new);
+}
+
+static char	*join_str(char *s1, char *s2, char *new)
+{
+	t_size_t	sum_len;
+	t_size_t	len;
+	t_size_t	i;
+
+	sum_len = get_len(s1, s2);
+	len = ft_strlen((char *) s1);
+	i = 0;
+	while (i < sum_len)
+	{
+		if (i < len)
+			*(new + i) = *(s1 + i);
+		else
+			*(new + i) = *(s2 + i - len);
+		i++;
+	}
+	*(new + i) = '\0';
+	return (new);
 }
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*new;
-	int		i;
-	int		l_s1;
-	int		l_s2;
+	char		*new;
+	t_size_t	len;
 
-	l_s1 = ft_strlen((char *) s1);
-	l_s2 = ft_strlen((char *) s2);
-	new = (char *) malloc (sizeof(char) * (l_s1 + l_s2 + 1));
+	new = alloc_str((char *) s1, (char *) s2);
 	if (new == NULL)
 		return (NULL);
-	i = 0;
-	while (i < l_s1 + l_s2)
-	{
-		if (i < l_s1)
-			*(new + i) = *(s1 + i);
-		else
-			*(new + i) = *(s2 + i - l_s1);
-		i++;
-	}
-	*(new + i) = '\0';
+	new = join_str((char *) s1, (char *) s2, new);
 	return (new);
 }
 
