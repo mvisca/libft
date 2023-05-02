@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	int		len;
-	char	*str;
+	t_size_t		i;
+	t_size_t		len;
+	char			*str;
 
 	i = 0;
 	len = ft_strlen((char *)s);
@@ -32,7 +32,6 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*
 int	main(void)
 {
 	char	s1[] = "Aqui hay una x y lo demas sigue...";
@@ -42,4 +41,3 @@ int	main(void)
 	printf ("%s", s2);
 	return (0);
 }
-*/

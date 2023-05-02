@@ -19,8 +19,10 @@ char	*ft_strdup(const char *s)
 
 	dup = (char *) malloc (sizeof(char) * ft_strlen((char *) s) + 1);
 	if (dup == NULL)
+	{
+		errno = ENOMEM;
 		return (NULL);
-
+	}
 	i = 0;
 	while (*(s + i))
 	{

@@ -75,7 +75,7 @@ char	**ft_split(const char *s, char c)
 	char		**res;
 	char		*dup;
 
-	dup = ft_strdup((char *) s);
+	dup = ft_strdup(s);
 	dup = clean_str(dup, c);
 	res = alloc_arr(dup, c);
 	if (res == NULL)
@@ -86,7 +86,6 @@ char	**ft_split(const char *s, char c)
 	return (res);
 }
 
-/*
 int	main(int ac, char **av)
 {
 	char	s1[] = "   Esta prueba !! esto? ?   ";
@@ -104,4 +103,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-*/

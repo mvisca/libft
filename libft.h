@@ -16,12 +16,13 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <errno.h>
 
 typedef unsigned long	t_size_t;
 
 char		*ft_itoa(int n);
 char		*ft_shift(char *s);
-char		*ft_split(const char *s, char c);
+char		**ft_split(const char *s, char c);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
