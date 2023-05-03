@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:08:09 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/27 19:50:57 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:37:02 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, t_size_t n)
 {
-	int	 	i;
-	char	*ptr;
+	t_size_t	i;
+	char		*ptr;
 
 	ptr = (char *) s;
 	i = 0;

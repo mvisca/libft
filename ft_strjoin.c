@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:21:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/25 11:22:38 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:00:05 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static char	*join_str(char *s1, char *s2, char *new)
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char		*new;
-	t_size_t	len;
 
 	new = alloc_str((char *) s1, (char *) s2);
 	if (new == NULL)

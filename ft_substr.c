@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 10:48:37 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:06:31 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_substr(const char *s, unsigned int start, t_size_t len)
 {
-	unsigned char	*sub;
-	t_size_t		i;
+	char		*sub;
+	t_size_t	i;
 
 	sub = (char *) malloc (sizeof(char) * len);
 	if (sub == NULL)

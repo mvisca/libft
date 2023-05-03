@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:10:01 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/02 17:12:37 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:41:24 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,22 @@
 
 static char	*alloc_num(int n)
 {
+	int		len;
+	int		ccpy;
 	char	*num;
 
-	num = (char *) malloc (sizeof(char) * 12);
+	len = 1;
+	ccpy = n;
+	while (n / 10 > 0)
+	{
+		len++;
+	}
+
+	num = (char *) malloc (sizeof(char) * n);
 	if (num == NULL)
 		return (NULL);
 	
-	ft_bzero(num, 12);
+	ft_bzero(num, n);
 	return (num);
 }
 

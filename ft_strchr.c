@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:34:52 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/28 18:13:26 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:15:39 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
+/*
 int	main(void)
 {
 	char	s1[] = "Aqui hay una x y lo demas sigue...";
@@ -41,3 +42,4 @@ int	main(void)
 	printf ("%s", s2);
 	return (0);
 }
+*/

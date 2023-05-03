@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:26:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/25 12:05:19 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 20:59:32 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ char	**ft_split(const char *s, char c)
 	return (res);
 }
 
+/*
 int	main(int ac, char **av)
 {
 	char	s1[] = "   Esta prueba !! esto? ?   ";
@@ -103,3 +104,4 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+*/

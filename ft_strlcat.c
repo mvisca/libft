@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:42:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/28 19:36:25 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:01:03 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_size_t	ft_strlcat(char *dest, const char *src, t_size_t size)
 {
 	t_size_t	i;
-	int			len_dest;
-	int			len_src;
+	t_size_t	len_dest;
+	t_size_t	len_src;
 
 	len_src = ft_strlen((char *)src);
 	len_dest = ft_strlen(dest);
