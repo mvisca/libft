@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:07:43 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/02 18:41:28 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:43:00 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		*ft_memcmp(const void *s1, const void *s2, t_size_t n);
 void		*ft_memchr(const void *s, int c, t_size_t n);
 void    	*ft_memmove(void *dest, const void *src, t_size_t n);
 void		*ft_memset(void *b, int c, t_size_t len);
-void		ft_putchat_fd(char c, int fd);
+void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void 		ft_striteri(char *s, void (*f)(unsigned int, char*));
 

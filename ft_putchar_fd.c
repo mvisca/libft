@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 17:52:02 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/02 18:52:39 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:45:54 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_putchar_fd(char c, int fd)
 	write (fd, &c, 1); 
 }
 
+/*
 static int	prep(char *s)
 {
 	int	fd;
@@ -40,3 +41,4 @@ int	main(int ac, char **av)
 	prep(av[1]);
 	return (0);
 }
+*/
