@@ -20,7 +20,7 @@ static void	split_arr(char **res, char *dup, char c)
 	j = 0;
 	while (ft_strchr(dup, c))
 	{
-		i = (t_size_t)ft_strchr(dup, c) - (t_size_t)dup;
+		i = ft_strchr(dup, c) - dup;
 		dup[i] = '\0';
 		res[j++] = ft_strdup(dup);
 		dup = dup + i + 1;

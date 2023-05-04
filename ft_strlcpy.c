@@ -16,8 +16,6 @@ t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size)
 {
 	t_size_t	i;
 
-	if (size == 0)
-		return (0);
 	i = 0;
 	while (src[i] && i < size - 1)
 	{
@@ -25,21 +23,21 @@ t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size)
 		i++;
 	}
 	dest[i] = '\0';
-	return (i);
+	return ((t_size_t)ft_strlen((char *)src));
 }
 
 /*
-TESTEAR CON UN ARGUEMENTO
 int	main(int ac, char **av)
 {
 	char 		*s1 = av[1];
 	char		s2[20];
 	t_size_t	retorno;
 
-	retorno = ft_strlcpy(s2, s1, (t_size_t)ft_strlen(s1) - 1);
+	retorno = strlcpy(s2, s1, (t_size_t)ft_strlen(s1) - 1);
 
 	printf ("original: %s\n", s1);
-	printf ("copia: %s \nretorno: %lu\n", s2, retorno);
+	printf ("copia: %s \nretorno: %d\n", s2, retorno);
+
 	return (0);
 }
 */

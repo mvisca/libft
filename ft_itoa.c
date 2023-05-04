@@ -15,11 +15,9 @@
 static char	*alloc_num(int n)
 {
 	int		len;
-	int		ccpy;
 	char	*num;
 
 	len = 1;
-	ccpy = n;
 	while (n / 10 > 0)
 	{
 		len++;
