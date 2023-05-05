@@ -6,21 +6,21 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:21:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 21:00:05 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:17:33 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_size_t	get_len(char *s1, char *s2)
+static size_t	get_len(char *s1, char *s2)
 {
 	return (ft_strlen(s1) + ft_strlen(s2));
 }
 
-static char *alloc_str(char *s1, char *s2)
+static char	*alloc_str(char *s1, char *s2)
 {
-	char		*new;
-	t_size_t	len;
+	char	*new;
+	size_t	len;
 
 	len = get_len(s1, s2);
 	new = (char *) malloc (sizeof(char) * len + 1);
@@ -31,9 +31,9 @@ static char *alloc_str(char *s1, char *s2)
 
 static char	*join_str(char *s1, char *s2, char *new)
 {
-	t_size_t	sum_len;
-	t_size_t	len;
-	t_size_t	i;
+	size_t	sum_len;
+	size_t	len;
+	size_t	i;
 
 	sum_len = get_len(s1, s2);
 	len = ft_strlen((char *) s1);

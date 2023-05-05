@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:26:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 20:59:32 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:18:50 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	split_arr(char **res, char *dup, char c)
 {
-	t_size_t i;
-	t_size_t j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
 	while (ft_strchr(dup, c))
@@ -31,8 +31,8 @@ static void	split_arr(char **res, char *dup, char c)
 
 static char	**alloc_arr(char *s, char c)
 {
-	char		**arr;
-	t_size_t	nelem;
+	char	**arr;
+	size_t	nelem;
 
 	nelem = 0;
 	while (*s)
@@ -49,9 +49,9 @@ static char	**alloc_arr(char *s, char c)
 
 static char	*clean_str(char *s, char c)
 {
-	t_size_t	len;
-	char		*scpy;
-	
+	size_t	len;
+	char	*scpy;
+
 	scpy = s;
 	while (*s)
 	{
@@ -80,7 +80,6 @@ char	**ft_split(const char *s, char c)
 	res = alloc_arr(dup, c);
 	if (res == NULL)
 		return (NULL);
-
 	split_arr(res, dup, c);
 	free (dup);
 	return (res);

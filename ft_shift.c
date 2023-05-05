@@ -1,24 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_shift.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/04 14:19:18 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/05/04 14:20:04 by mvisca-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_shift(char *s)
 {
 	char	*tmp;
-	int		 i;
+	int		i;
 
 	if (ft_strlen(s) == 0)
 		return (s);
-
 	tmp = (char *) malloc (sizeof(char) * ft_strlen(s));
 	if (tmp == NULL)
 		return (NULL);
-
 	if (ft_strlen(s) < 2)
 	{
 		*(tmp) = '\0';
 		free(s);
 		return (tmp);
 	}
-
 	i = 1;
 	while (*(s + i))
 	{

@@ -6,23 +6,22 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 14:28:45 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/02 17:17:43 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:16:18 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*res;
-	unsigned int	len;
-	unsigned int	i;
+	char	*res;
+	size_t	len;
+	size_t	i;
 
 	len = (unsigned int) ft_strlen((char *) s);
 	res = (char *) malloc (sizeof(char) * (len + 1));
 	if (res == NULL)
 		return (NULL);
-
 	i = 0;
 	while (*s != '\0')
 	{
@@ -31,9 +30,8 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		s++;
 	}
 	res[i] = '\0';
-	return (res);	
+	return (res);
 }
-
 /*
 static char	aux_func(unsigned int i, char c)
 {

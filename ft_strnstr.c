@@ -6,28 +6,30 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:37:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/28 20:23:00 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:00:58 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, t_size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	t_size_t 	i;
-	t_size_t	j;
-	char		*h;
-	char		*n;
+	size_t	i;
+	size_t	j;
+	char	*h;
+	char	*n;
 
 	h = (char *) haystack;
 	n = (char *) needle;
+	if (ft_strlen(n) < 1 )
+		return (h);
 	i = 0;
-	while (*(h + i) != '\0' && i < len)
+	while (*(h + i) && i < len)
 	{
 		j = 0;
 		while (*(n + j) == *(h + i + j))
 		{
-			if (*(n + j + 1) == '\0')
+			if (*(n + j + 1) == '\0' && (i + j < len))
 			{
 				return (h + i);
 			}
@@ -48,7 +50,7 @@ int	main(void)
 	ft_strlcpy(c, "tal", 4);
 
 	char	*ptr3;
-	t_size_t	n;
+	size_t	n;
 
 	n = 20; 
 	ptr3 = ft_strnstr(str, c, n);

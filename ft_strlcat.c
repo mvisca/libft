@@ -6,17 +6,17 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 19:42:07 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 21:01:03 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:58:34 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_size_t	ft_strlcat(char *dest, const char *src, t_size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_size_t	i;
-	t_size_t	len_dest;
-	t_size_t	len_src;
+	size_t	i;
+	size_t	len_dest;
+	size_t	len_src;
 
 	len_src = ft_strlen((char *)src);
 	len_dest = ft_strlen(dest);
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 	char 		*s1 = av[1];
 	char		s2[30] = "hola ";
 	char		s3[30] = "hola ";
-	t_size_t	retorno;
+	size_t		retorno;
 
 	system("clear");
 	retorno = ft_strlcat(s2, s1, atoi(av[2]));

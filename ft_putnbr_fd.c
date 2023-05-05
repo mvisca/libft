@@ -6,13 +6,13 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:04:28 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 19:15:44 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:20:33 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char	*nbr;
 

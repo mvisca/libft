@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:34:52 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 21:15:39 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:02:11 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	t_size_t		i;
-	t_size_t		len;
-	char			*str;
+	char	*scpy;
+	char	ccpy;
 
-	i = 0;
-	len = ft_strlen((char *)s);
-	str = (char *) s;
-	while (i < len + 1)
+	scpy = (char *)s;
+	ccpy = (char)c;
+
+	while (*scpy)
 	{
-		if (*(str + i) == c)
-		{
-			return (str + i);
-		}
-		i++;
+		if (*scpy == ccpy)
+			return (scpy);
+		scpy++;
 	}
+	if (*scpy == ccpy)
+		return (scpy);
 	return (NULL);
 }
 

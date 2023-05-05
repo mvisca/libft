@@ -6,15 +6,15 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:30:56 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/27 17:32:51 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:01:04 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_size_t	ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
-	t_size_t	len;
+	size_t	len;
 
 	len = 0;
 	while (*(str + len))

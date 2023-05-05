@@ -6,15 +6,15 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:49:31 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/04/24 10:41:21 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:52:08 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void free_arr(t_size_t i, void **ptr)
+void free_arr(size_t i, void **ptr)
 {
-	t_size_t j;
+	size_t j;
 
 	j = 0;
 	while (j < i)
@@ -26,10 +26,10 @@ void free_arr(t_size_t i, void **ptr)
 	ptr = NULL;
 }
 
-void *ft_calloc(t_size_t nmemb, t_size_t size)
+void *ft_calloc(size_t nmemb, size_t size)
 {
 	void	**ptr;
-	t_size_t	i;
+	size_t	i;
 
 	if (nmemb * size == 0)
 		return (NULL);
