@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:26:55 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/04 14:18:50 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/06 20:30:49 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ static void	split_arr(char **res, char *dup, char c)
 	size_t	i;
 	size_t	j;
 
+	if (ft_strlen(dup) == 0)
+	{
+		res[0] = NULL;
+		return;
+	}
 	j = 0;
-	while (ft_strchr(dup, c))
+	while (c && ft_strchr(dup, c))
 	{
 		i = ft_strchr(dup, c) - dup;
 		dup[i] = '\0';
@@ -41,7 +46,7 @@ static char	**alloc_arr(char *s, char c)
 			nelem++;
 		s++;
 	}
-	arr = (char **) malloc (sizeof(char *) * nelem + 2);
+	arr = (char **) malloc(sizeof(char *) * (nelem + 2));
 	if (arr == NULL)
 		return (NULL);
 	return (arr);
@@ -76,6 +81,8 @@ char	**ft_split(const char *s, char c)
 	char		*dup;
 
 	dup = ft_strdup(s);
+	if (dup == NULL)
+		return (NULL);
 	dup = clean_str(dup, c);
 	res = alloc_arr(dup, c);
 	if (res == NULL)
@@ -86,15 +93,15 @@ char	**ft_split(const char *s, char c)
 }
 
 /*
-int	main(int ac, char **av)
+int	main(void)
 {
-	char	s1[] = "   Esta prueba !! esto? ?   ";
+//	char	s1[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+	char	s1[] = "notempty";
 	char	**res;
 	int		i;
-	char	*c = " ";
+	char	c = '\0';
 
-	printf ("A: %s.\n", av[1]);
-	res = ft_split(av[1], av[2][0]);
+	res = ft_split(s1, c);
 	i = 0;
 	while (res[i] != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:46:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/05 16:40:36 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:09:34 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ft_atoi(const char *nptr)
 	int		sign;
 	char	*num;
 
-	if (nptr == NULL)
-		return (0);
 	num = (char *)nptr;
 	while (ft_isspace(*num))
 		num++;
