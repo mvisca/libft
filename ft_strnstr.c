@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	h = (char *) haystack;
 	n = (char *) needle;
-	if (ft_strlen(n) < 1 )
+	if (ft_strlen(n) < 1)
 		return (h);
 	i = 0;
 	while (*(h + i) && i < len)

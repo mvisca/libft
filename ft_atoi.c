@@ -12,6 +12,15 @@
 
 #include "libft.h"
 
+static int	get_sign(char c)
+{
+	if (c == '+')
+		return (1);
+	if (c == '-')
+		return (-1);
+	return (0);
+}
+
 static int	ft_isspace(char c)
 {
 	if ((c >= 9 && c <= 13) || (c == 32))
@@ -19,40 +28,45 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-static int	is_neg(char c)
-{
-	if (c == '+')
-		return (1);
-	else if (c == '-')
-		return (-1);
-	return (0);
-}
-
 int	ft_atoi(const char *nptr)
 {
-	int	n;
-	int	neg;
+	int		res;
+	int		sign;
+	char	*num;
 
 	if (nptr == NULL)
 		return (0);
-	while (ft_isspace(*nptr))
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
-		neg = is_neg(*(nptr++));
-	if (!(ft_isdigit(*nptr)))
-		return (0);
-	n = 0;
-	while (*nptr && ft_isdigit(*nptr))
+	num = (char *)nptr;
+	while (ft_isspace(*num))
+		num++;
+	sign = 1;
+	if (get_sign(*num))
 	{
-		n = (n * 10) + *nptr++ - '0';
+		if (ft_isdigit(*(num + 1)))
+			sign = get_sign(*(num++));
+		else
+			return (0);
 	}
-	return (n * neg);
+	res = 0;
+	while (ft_isdigit(*num))
+		res = res * 10 + *(num++) - '0';
+	return (res * sign);
 }
 
 /*
 int	main(int ac, char **av)
 {
-	printf ("%d", ft_atoi(av[1]));
+	char *s = "  \v\r\f\n\t ia+22";
+	if (ac == 2)
+	{
+		printf ("MIO=%d\n", ft_atoi(av[1]));
+		printf ("ORI=%d\n", atoi(av[1]));
+	}
+	else
+	{
+		printf ("MIO=%d\n", ft_atoi(s));
+		printf ("ORI=%d\n", atoi(s));
+	}
 	return (0);
 }
 */

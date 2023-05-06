@@ -14,10 +14,16 @@
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char	*sub;
-	size_t	i;
+	char		*scpy;
+	char		*sub;
+	size_t		i;
 
-	sub = (char *) malloc (sizeof(char) * len);
+	scpy = (char *)s;
+	if (ft_strlen(scpy) == 0 || ft_strlen(scpy) < start)
+		return (ft_strdup(""));
+	if (ft_strlen(scpy) < start + len)
+		len = ft_strlen(scpy) - start;	
+	sub = (char *) malloc (sizeof(char) * (len + 1));
 	if (sub == NULL)
 		return (NULL);
 	i = 0;

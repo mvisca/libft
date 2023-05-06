@@ -12,77 +12,36 @@
 
 #include "libft.h"
 
-void free_arr(size_t i, void **ptr)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t j;
+	void	*ptr;
 
-	j = 0;
-	while (j < i)
-	{
-		free(*(ptr + j));
-			j++;
-	}
-	free(ptr);
 	ptr = NULL;
-}
-
-void *ft_calloc(size_t nmemb, size_t size)
-{
-	void	**ptr;
-	size_t	i;
-
-	if (nmemb * size == 0)
+	if (size == 0)
 		return (NULL);
-	
-	ptr = (void **) malloc (sizeof(void *) * nmemb);
+	if (nmemb == 0)
+		return (NULL);
+	if (nmemb * size > MAX_INT)
+		return (NULL);
+	ptr = (void *) malloc (nmemb * size);
 	if (ptr == NULL)
 		return (NULL);
-
-	i = 0;
-	while (i < nmemb)
-	{
-		*(ptr + i) = (void *) malloc (size);
-		if (*(ptr + i) == NULL)
-		{
-			free_arr(i, ptr);
-			return (NULL);
-		}
-		i++;
-	}
+	ft_memset(ptr, 0, nmemb * size);
 	return (ptr);
 }
 
 /*
 int main(void)
 {
-	char	**cptr;
-	int		i;
-	int		j;
+	char	*cptr;
 
-	cptr = (char **) ft_calloc (4, 10);
+	cptr = (char *) ft_calloc (2222222222, 1);
 	if (cptr == NULL)
 	{
 		printf ("FAIL");
 		return (1);
 	}
-	
-	printf ("OK\n");
-	i = 0;
-	while (i < 4)
-	{
-		printf ("\nGO i = %d\n", i);
-		j = 0;
-		while (j < 10)
-		{
-			printf ("\nGO j = %d\n", j);
-			*(*(cptr + i) + j) = 'a' + j + i;
-			j++;
-			}
-		printf ("%s\n", *(cptr + i));
-		i++;
-	}
-	free_arr(i, (void **) cptr);
-	printf ("Free done");
-    return (0);
+	free(cptr);
+	return (0);
 }
 */

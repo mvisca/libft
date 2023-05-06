@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 17:38:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 21:13:47 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/24 18:20:20 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/05/03 21:01:27 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_strncmp(const char *s1, const char *s2, t_size_t n)
 {
-	if ((unsigned char) c >= 'A' && (unsigned char) c <= 'Z')
+	t_size_t	i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
 	{
-		return (c += 32);
+		if (i == n - 1)
+			return (0);
+		i++;
 	}
-	return (c);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-/*
-int	main(void)
-{
-	unsigned char	c;
-
-	c = 'A';
-	printf ("%c <> %c", c, ft_tolower(c));
-	return (0);
-}
-*/

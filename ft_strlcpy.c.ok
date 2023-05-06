@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 17:38:36 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/03 21:13:47 by mvisca-g         ###   ########.fr       */
+/*   Created: 2023/04/20 19:04:27 by mvisca-g          #+#    #+#             */
+/*   Updated: 2023/04/27 21:55:06 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+t_size_t	ft_strlcpy(char *dest, const char *src, t_size_t size)
 {
-	if ((unsigned char) c >= 'A' && (unsigned char) c <= 'Z')
+	t_size_t	i;
+
+	if (size != 0)
 	{
-		return (c += 32);
+		i = 0;
+		while (src[i] && i < size - 1)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	return (c);
+	return ((t_size_t)ft_strlen((char *)src));
 }
 
 /*
-int	main(void)
+int	main(int ac, char **av)
 {
-	unsigned char	c;
+	char 		*s1 = av[1];
+	char		s2[20];
+	t_size_t	retorno;
 
-	c = 'A';
-	printf ("%c <> %c", c, ft_tolower(c));
+	retorno = strlcpy(s2, s1, (t_size_t)ft_strlen(s1) - 1);
+
+	printf ("original: %s\n", s1);
+	printf ("copia: %s \nretorno: %d\n", s2, retorno);
+
 	return (0);
 }
 */

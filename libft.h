@@ -20,6 +20,9 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
+
 char	*ft_itoa(int n);
 char	*ft_shift(char *s);
 char	**ft_split(const char *s, char c);
