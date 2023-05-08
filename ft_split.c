@@ -48,7 +48,10 @@ static char	**alloc_arr(char *s, char c)
 	}
 	arr = (char **) malloc(sizeof(char *) * (nelem + 2));
 	if (arr == NULL)
+	{
+		errno = ENOMEM;
 		return (NULL);
+	}
 	return (arr);
 }
 
