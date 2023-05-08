@@ -12,66 +12,73 @@
 
 #include "libft.h"
 
-static char	*alloc_res(const char *s1, const char *set)
+static int	isset(char c, const char *set)
 {
-	char	*res;
-	size_t	aux;
-
-	aux = ft_strlen((char *) s1) - ft_strlen((char *) set);
-	res = (char *) malloc (sizeof(char) * (aux + 1));
-	if (res == NULL)
-		return (NULL);
-	return (res);
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
 }
 
-static char	*str_trim(char *s1, char *set, char *res)
+static char	*trim_ini(char *dup, const char *set)
 {
-	char	*rescpy;
-	char	*start;
-	char	*end;
-	size_t	len;
-
-	rescpy = res;
-	len = ft_strlen(s1);
-	start = ft_strnstr(s1, set, len);
-	end = (start + ft_strlen(set));
-	while (*s1 != '\0')
+	while (isset(*(dup), set))
 	{
-		if (s1 >= start && s1 < end)
-		{
-			s1++;
-			continue ;
-		}
-		*rescpy++ = *s1++;
+		ft_memmove(dup, (dup + 1), ft_strlen(dup + 1) + 1);
 	}
-	*rescpy = '\0';
-	return (res);
+	return (dup);
+}
+
+static char	*trim_end(char *dup, const char *set)
+{
+	while (isset(*(dup + ft_strlen(dup) - 1), set))
+	{
+		*(dup + ft_strlen(dup) - 1) = '\0';
+	}
+	return (dup);
 }
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
+	char	*dup;
 	char	*res;
 	size_t	len;
 
-	len = ft_strlen((char *)s1);
-	if (ft_strnstr(s1, set, len) == NULL)
-		return ((char *)s1);
-	res = alloc_res(s1, set);
-	if (res == NULL)
+	if (s1 == NULL)
 		return (NULL);
-	res = str_trim((char *)s1, (char *)set, res);
+	if (set == NULL)
+		return ((char *)s1);
+	dup = ft_strdup(s1);
+	dup = trim_ini(dup, set);
+	dup = trim_end(dup, set);
+	len = ft_strlen(dup);
+	res = (char *) malloc (sizeof(char) * len + 1);
+	if (res == NULL)
+	{
+		errno = ENOMEM;
+		free(dup);
+		return (NULL);
+	}
+	res = memmove(res, dup, ft_strlen(dup) + 1);
+	free(dup);
 	return (res);
 }
 
 /*
 int	main(void)
 {
-	char	s1[] = "Quitar quItar algo";
-	char	set1[] = "Itar";
+	char	s1[] = "   \t  \n\n \t\t  \n\n\nHello 
+	\t  Please\n Trim me !\n   \n \n \t\t\n";
+	char	set2[] = " \n\t";
 	char	*res1;
 
-	res1 = ft_strtrim(s1, set1);
+	res1 = ft_strtrim(s1, set2);
 	printf ("MIA=%s\n", res1);
+//	res1 = strtrim(s2, set2);
+//	printf ("ORI=%s\n", res1);
 	return (0);
 }
 */

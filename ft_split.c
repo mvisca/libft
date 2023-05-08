@@ -20,7 +20,7 @@ static void	split_arr(char **res, char *dup, char c)
 	if (ft_strlen(dup) == 0)
 	{
 		res[0] = NULL;
-		return;
+		return ;
 	}
 	j = 0;
 	while (c && ft_strchr(dup, c))
@@ -95,7 +95,7 @@ char	**ft_split(const char *s, char c)
 /*
 int	main(void)
 {
-//	char	s1[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.";
+//	char	s1[] = "lorem euismod non, mi.";
 	char	s1[] = "notempty";
 	char	**res;
 	int		i;

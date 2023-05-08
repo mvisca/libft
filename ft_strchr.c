@@ -19,7 +19,6 @@ char	*ft_strchr(const char *s, int c)
 
 	scpy = (char *)s;
 	ccpy = (char)c;
-
 	while (*scpy)
 	{
 		if (*scpy == ccpy)

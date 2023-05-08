@@ -22,11 +22,11 @@ static char	*alloc_num(int n)
 	{
 		len++;
 	}
-
 	num = (char *) malloc (sizeof(char) * n);
 	if (num == NULL)
+	{
 		return (NULL);
-	
+	}
 	ft_bzero(num, n);
 	return (num);
 }
@@ -36,7 +36,7 @@ static char	*get_digits(char *num, int n)
 	char	*res;
 	char	*numcpy;
 	char	temp;
-	
+
 	res = num;
 	numcpy = num;
 	while (n / 10 > 0)
@@ -61,10 +61,13 @@ char	*ft_itoa(int n)
 
 	num = alloc_num(n);
 	if (num == NULL)
+	{
 		return (NULL);
-	
+	}
 	if (n >= 0)
+	{
 		get_digits(num, n);
+	}
 	else
 	{
 		*num = '-';
