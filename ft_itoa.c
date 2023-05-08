@@ -12,67 +12,46 @@
 
 #include "libft.h"
 
-static char	*alloc_num(int n)
+static int	set_n(int n)
 {
-	int		len;
-	char	*num;
-
-	len = 1;
-	while (n / 10 > 0)
-	{
-		len++;
-	}
-	num = (char *) malloc (sizeof(char) * n);
-	if (num == NULL)
-	{
-		return (NULL);
-	}
-	ft_bzero(num, n);
-	return (num);
+	if (n < 0)
+		n = -n;
+	return (n);
 }
 
-static char	*get_digits(char *num, int n)
+static char	*get_string(int ncpy, char *res)
 {
-	char	*res;
-	char	*numcpy;
-	char	temp;
-
-	res = num;
-	numcpy = num;
-	while (n / 10 > 0)
+	while (ncpy / 10 > 0)
 	{
-		*numcpy = n % 10 + '0';
-		numcpy++;
-		n = n / 10;
+		ft_memmove((res + 1), res, ft_strlen(res));
+		res[0] = ncpy % 10 + '0';
+		ncpy = ncpy / 10;
 	}
-	*numcpy = n % 10 + '0';
-	while (num - 1 <= numcpy - 1)
-	{
-		temp = *num;
-		*(num++) = *numcpy;
-		*(numcpy--) = temp;
-	}
+	ft_memmove((res + 1), res, ft_strlen(res));
+	res[0] = ncpy + '0';
 	return (res);
 }
 
 char	*ft_itoa(int n)
 {
+	char	*res;
 	char	*num;
+	int		ncpy;
 
-	num = alloc_num(n);
-	if (num == NULL)
-	{
+	if (n == MIN_INT)
+		return (ft_strdup("-2147483648"));
+	ncpy = set_n(n);
+	res = (char *) calloc (13, sizeof(char));
+	if (res == NULL)
 		return (NULL);
-	}
-	if (n >= 0)
+	get_string(ncpy, res);
+	if (n < 0)
 	{
-		get_digits(num, n);
+		ft_memmove(&res[1], res, ft_strlen(res));
+		res[0] = '-';
 	}
-	else
-	{
-		*num = '-';
-		get_digits(&num[1], -n);
-	}
+	num = ft_strdup(res);
+	free(res);
 	return (num);
 }
 
