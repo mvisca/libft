@@ -1,4 +1,5 @@
 # **************************************************************************** #
+# rm	
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +7,7 @@
 #    By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 19:18:12 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/05/08 19:36:50 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/05/09 17:35:18 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,15 +36,14 @@ $(NAME): $(LIBFT_OBJS)
 	@echo "Compiling"
 	$(CC) $(CFLAGS) $< -o $@
 
-bonus: $(NAME)
-
-$(NAME): $(LIBFT_OBJS) $(BONUS_OBJS)
+bonus: $(LIBFT_OBJS) $(BONUS_OBJS)
 	@echo "Creating library + bonus"
-	$(AR) $@ $(LIBFT_OBJS) $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
 
 clean:
 	@echo "Delete *.o"
 	$(RM) $(LIBFT_OBJS)
+	$(RM) $(BONUS_OBJS)
 
 fclean: clean
 	@echo "Delete program"
