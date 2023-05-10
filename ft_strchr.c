@@ -14,19 +14,17 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*scpy;
-//	char	ccpy;
+	int		stop;
 
-	scpy = (char *)s;
-//	ccpy = (char)c;
-	while (*scpy)
+	stop = 0;
+	while (!stop)
 	{
-		if (*scpy == c)
-			return (scpy);
-		scpy++;
+		if (*s == 0)
+			stop = 1;
+		if (*s == c)
+			return (s);
+		s++;
 	}
-//	if (*scpy == ccpy)
-//		return (scpy);
 	return (NULL);
 }
 
