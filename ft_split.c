@@ -12,6 +12,13 @@
 
 #include "libft.h"
 
+static void	free_all(char **res, size_t i)
+{
+	while (i > 0)
+		free(res[i--]);
+	free(res);
+	res = NULL;
+}
 static void	split_arr(char **res, char *dup, char c)
 {
 	size_t	i;
@@ -27,7 +34,14 @@ static void	split_arr(char **res, char *dup, char c)
 	{
 		i = ft_strchr(dup, c) - dup;
 		dup[i] = '\0';
-		res[j++] = ft_strdup(dup);
+		res[j] = ft_strdup(dup);
+		if (!res[j])
+		{
+			free_all(res, j);
+			res = NULL;
+			return ;
+		}
+		j++;
 		dup = dup + i + 1;
 	}
 	res[j++] = ft_strdup(dup);
@@ -94,6 +108,9 @@ char	**ft_split(const char *s, char c)
 	free (dup);
 	return (res);
 }
+
+
+// MAIN
 
 /*
 int	main(void)

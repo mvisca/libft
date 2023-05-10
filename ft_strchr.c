@@ -15,18 +15,18 @@
 char	*ft_strchr(const char *s, int c)
 {
 	char	*scpy;
-	char	ccpy;
+//	char	ccpy;
 
 	scpy = (char *)s;
-	ccpy = (char)c;
+//	ccpy = (char)c;
 	while (*scpy)
 	{
-		if (*scpy == ccpy)
+		if (*scpy == c)
 			return (scpy);
 		scpy++;
 	}
-	if (*scpy == ccpy)
-		return (scpy);
+//	if (*scpy == ccpy)
+//		return (scpy);
 	return (NULL);
 }
 
