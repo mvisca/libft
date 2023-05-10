@@ -14,34 +14,74 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*curr_new;
-	t_list	*new_list;
+	t_list	*head;
+	t_list	*curr;
 
 	if (!lst)
 		return (NULL);
-	new_list = ft_lstnew(f(lst->content));
-	if (!new_list)
-	{
-		del(new_list);
+	head = ft_lstnew(f(lst->content));
+	if (!head)
 		return (NULL);
-	}
-	curr_new = new_list;
-	while (lst->next)
+	curr = head;
+	lst = lst->next;
+	while (lst && lst->content)
 	{
-		lst = lst->next;
-		curr_new->next = ft_lstnew(f(lst->content));
-		if (!curr_new->next)
+		curr->next = ft_lstnew(f(lst->content));
+		if (!curr->next)
 		{
-			ft_lstclear(&curr_new, del);
+			ft_lstclear(&head, del);
 			return (NULL);
 		}
-		if (!curr_new->next)
-		{
-			del(curr_new->next);
-			free(curr_new);
-		}
-		else
-			curr_new = curr_new->next;
+		curr = curr->next;
+		lst = lst->next;
 	}
-	return (new_list);
+	return (head);
 }
+
+/*
+void	*f(void *cont)
+{
+	char	*str;
+
+	str = (char *)cont;
+	while (*str)
+	{
+		if (*str >= 'a' && *str <= 'z')
+			*str = *str - 32;
+		str++;
+	}
+	return (str);
+
+}
+
+void	del(void *cont)
+{
+	free(cont);
+}
+
+int     main(void)
+{
+        char    s1[] = "Hola";
+        char    s2[] = "Mundo";
+        t_list  *head;
+        t_list  *tmp;
+
+        head = ft_lstnew(s1);
+        head->next = ft_lstnew(s2);
+        ft_lstadd_front(&head, ft_lstnew(ft_strdup("Primero")));
+        ft_lstadd_back(&head, ft_lstnew(ft_strdup("Ultimo")));
+        ft_lstadd_back(&head, ft_lstnew(ft_strdup("Borrable")));
+        ft_lstadd_back(&head, ft_lstnew(ft_strdup("Otro")));
+        tmp = head;
+        while (tmp)
+        {
+        	printf ("%s\n", (char *)tmp->content);
+            tmp = tmp->next;
+        }
+        printf ("SIZE=%d\n", ft_lstsize(head));
+        printf ("LAST=%s\n", (char *)(ft_lstlast(head))->content);
+   		head = ft_lstmap(head, f, del);
+        printf ("LAST=%s\n", (char *)(ft_lstlast(head))->content);
+        return (0);
+}
+*/

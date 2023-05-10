@@ -28,3 +28,25 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (ncount);
 }
+
+/*
+int     main(void)
+{
+        char    s1[] = "Hola";
+        char    s2[] = "Mundo";
+        t_list  *head;
+        t_list  *tmp;
+
+        head = ft_lstnew(s1);
+        head->next = ft_lstnew(s2);
+                ft_lstadd_front(&head, ft_lstnew(ft_strdup("Primero")));
+                tmp = head;
+        while (tmp)
+        {
+                printf ("%s\n", (char *)tmp->content);
+                tmp = tmp->next;
+        }
+		printf ("SIZE=%d\n", ft_lstsize(head));
+        return (0);
+}
+*/

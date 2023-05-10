@@ -23,3 +23,24 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
+
+/*
+int	main(void)
+{
+	char	s1[] = "Hola";
+	char	s2[] = "Mundo";
+	t_list	*head;
+	t_list	*tmp;
+
+	
+	head = ft_lstnew(s1);
+	head->next = ft_lstnew(s2);
+	tmp = head;
+	while (tmp)
+	{
+		printf ("%s\n", (char *)tmp->content);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+*/
