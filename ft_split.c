@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*t                                                                           */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -12,122 +12,110 @@
 
 #include "libft.h"
 
-static void	free_all(char **res, size_t i)
+static void	delete_arr(char **arr, int i)
 {
-	while (i > 0)
-		free(res[i--]);
-	free(res);
-	res = NULL;
+	while (i-- > 0)
+		free(arr[i]);
+	free(arr);
 }
-static void	split_arr(char **res, char *dup, char c)
-{
-	size_t	i;
-	size_t	j;
 
-	if (ft_strlen(dup) == 0)
+static int	count_words(const char *s, char c)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (s[i] != 0)
 	{
-		res[0] = NULL;
-		return ;
-	}
-	j = 0;
-	while (c && ft_strchr(dup, c))
-	{
-		i = ft_strchr(dup, c) - dup;
-		dup[i] = '\0';
-		res[j] = ft_strdup(dup);
-		if (!res[j])
+		if (s[i] == c)
 		{
-			free_all(res, j);
-			res = NULL;
-			return ;
+			i++;
+			continue ;
 		}
-		j++;
-		dup = dup + i + 1;
+		count++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	res[j++] = ft_strdup(dup);
-	res[j] = NULL;
+	printf ("Words count is %d\n", count);
+	return (count);
 }
 
-static char	**alloc_arr(char *s, char c)
+static int	get_words(char **arr, const char *s, char c)
 {
-	char	**arr;
-	size_t	nelem;
-
-	nelem = 0;
-	while (*s)
-	{
-		if (*s == c)
-			nelem++;
-		s++;
-	}
-	arr = (char **) malloc(sizeof(char *) * (nelem + 2));
-	if (arr == NULL)
-	{
-		errno = ENOMEM;
-		return (NULL);
-	}
-	return (arr);
-}
-
-static char	*clean_str(char *s, char c)
-{
-	size_t	len;
 	char	*scpy;
+	int		i;
+	int		j;
 
-	scpy = s;
-	while (*s)
+	scpy = (char *)s;
+	i = 0;
+	j = 0;
+	while (scpy[i])
 	{
-		if ((s == scpy && *s == c)
-			|| (*s == c && *(s + 1) == c)
-			|| (*s == c && *(s + 1) == '\0'))
+		while (scpy[i] == c)
+			scpy++;
+		while (scpy[i] && scpy[i] != c)
+			i++;
+		arr[j] = ft_substr(scpy, 0, i);
+		if (!arr[j])j++;
 		{
-			len = ft_strlen(s);
-			ft_memmove(s, (s + 1), len);
+			delete_arr(arr, j);
+			return (1);
 		}
-		else
-		{
-			s++;
-		}
+		scpy = scpy + i;
+		i = 0;
+
 	}
-	return (scpy);
+	return (0);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char		**res;
-	char		*dup;
+	char	**arr;
+	int		words;
 
-	dup = ft_strdup(s);
-	if (dup == NULL)
+	if (!(s)) 
 		return (NULL);
-	dup = clean_str(dup, c);
-	res = alloc_arr(dup, c);
-	if (res == NULL)
+	if (c == 0)
+		return ((char **)calloc(1, sizeof(char**)));
+	words = count_words(s, c);
+	printf ("NUM WORDS = %d", words);
+	arr = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!(arr))
 		return (NULL);
-	split_arr(res, dup, c);
-	free (dup);
-	return (res);
+	arr[words] = NULL;
+	if (!get_words(arr, s, c))
+		return (NULL);
+	return (arr);
 }
 
-
-// MAIN
-
-/*
-int	main(void)
+static void	print_arr(char **res)
 {
-//	char	s1[] = "lorem euismod non, mi.";
-	char	s1[] = "notempty";
-	char	**res;
-	int		i;
-	char	c = '\0';
+	int	i;
 
-	res = ft_split(s1, c);
 	i = 0;
-	while (res[i] != NULL)
+	printf ("ARR STARRT, %d objects printed.\n", i);
+	while (i < 5)
 	{
+		printf ("IN PRINT, %d index.\n", i);
 		printf ("%d=%s. \n", i, res[i]);
 		i++;
 	}
+	printf ("ARR END, %d objects printed.\n", i);
+}
+
+int	main(int ac, char **av)
+{
+	char	**arr;
+	char	s[] = "Haremos un ejercicio de split con separador char=32";
+	char	c = ' ';
+
+	if (ac == 3)
+		arr = ft_split(av[1], av[2][0]);
+	else
+		arr = ft_split(s, c);
+	printf ("FET\n");
+	print_arr(arr);
+	delete_arr(arr, count_words(s, c));
 	return (0);
 }
-*/

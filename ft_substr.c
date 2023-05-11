@@ -20,7 +20,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	scpy = (char *)s;
 	if (ft_strlen(scpy) == 0 || ft_strlen(scpy) < start)
-		return (ft_strdup(""));
+		return ((char *)ft_calloc(1, 1));
 	if (ft_strlen(scpy) < start + len)
 		len = ft_strlen(scpy) - start;
 	sub = (char *) malloc (sizeof(char) * (len + 1));
