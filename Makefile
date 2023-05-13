@@ -16,8 +16,8 @@ CFLAGS=-c -Wall -Wextra -Werror -I.
 
 NAME=libft.a
 
-SRCS=$(wildcard *.c)
-EXPAN=$(wildcard ft_lst*.c)
+SRCS=$(shell find . -type f -name "ft_*.c")
+EXPAN=$(shell find . -type f -name "ft_lst*.c")
 LIBFT=$(filter-out $(EXPAN), $(SRCS))
 
 LIBFT_OBJS=$(LIBFT:.c=.o)
@@ -52,7 +52,7 @@ fclean: clean
 re: fclean all
 	@echo "Reseting"
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonusbonus  clean fclean re
 
 # Para incluir bonus poner la regla "bonus"
 # Agrega las funciones que estan prohibidas en la parte mandatoria del subject ( _bonus.{c/h} )
