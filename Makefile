@@ -44,6 +44,7 @@ clean:
 	@echo "Delete *.o"
 	$(RM) $(LIBFT_OBJS)
 	$(RM) $(BONUS_OBJS)
+	$(RM) a.out
 
 fclean: clean
 	@echo "Delete program"
