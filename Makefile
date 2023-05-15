@@ -46,6 +46,7 @@ OBJ_B =	$(SRC_B:.c=.o)
 AR = ar rcs
 RM = rm -f
 
+# Targets e instrucciones
 all: $(NAME)
 
 $(NAME): $(OBJ_L)
@@ -74,7 +75,5 @@ fclean: clean
 re: fclean all
 	@echo "Reseting"
 
+#Protección PHONY
 .PHONY: all clean fclean re
-
-# Para incluir bonus poner la regla "bonus"
-# Agrega las funciones que estan prohibidas en la parte mandatoria del subject ( _bonus.{c/h} )
