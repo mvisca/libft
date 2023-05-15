@@ -53,7 +53,7 @@ fclean: clean
 re: fclean all
 	@echo "Reseting"
 
-.PHONY: all bonusbonus  clean fclean re
+.PHONY: all clean fclean re
 
 # Para incluir bonus poner la regla "bonus"
 # Agrega las funciones que estan prohibidas en la parte mandatoria del subject ( _bonus.{c/h} )
