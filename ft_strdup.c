@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>	   +#+  +:+	   +#+		      */
 /*												+#+#+#+#+#+   +#+		      */
 /*   Created: 2023/04/24 11:25:25 by mvisca-g		  #+#	#+#			      */
-/*   Updated: 2023/04/24 10:48:37 by mvisca-g		 ###   ########.fr	      */
+/*   Updated: 2023/05/15 16:38:58 by mvisca-g         ###   ########.fr       */
 /*																			  */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ char	*ft_strdup(const char *s)
 
 	dup = (char *) malloc (sizeof(char) * ft_strlen((char *) s) + 1);
 	if (dup == NULL)
-	{
-		errno = ENOMEM;
 		return (NULL);
-	}
 	i = 0;
 	while (*(s + i))
 	{
@@ -32,7 +29,6 @@ char	*ft_strdup(const char *s)
 	*(dup + i) = '\0';
 	return (dup);
 }
-
 /*
 int main(void) {
 	char *original_str = "Hola mundo";
