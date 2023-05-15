@@ -1,53 +1,74 @@
 # **************************************************************************** #
 # rm	
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 19:18:12 by mvisca-g          #+#    #+#              #
-#    Updated: 2023/05/09 17:35:18 by mvisca-g         ###   ########.fr        #
-#                                                                              #
+#      #
+#    :::  ::::::::  #
+#  Makefile    :+:  :+:  :+:  #
+#    +:+ +:+  +:+  #
+#  By: mvisca-g <mvisca-g@student.42barcel>  +#+  +:+  +#+  #
+#    +#+#+#+#+#+  +#+  #
+#  Created: 2023/05/03 19:18:12 by mvisca-g  #+#  #+#  #
+#  Updated: 2023/05/09 17:35:18 by mvisca-g  ###  ########.fr  #
+#      #
 # **************************************************************************** #
 
-CC=cc
-CFLAGS=-c -Wall -Wextra -Werror -I.
+# Setup de variables con códigos de escape ANSI
+BLUE = \033[94m
+YELLOW = \033[93m
+RED = \033[91m
+GREEN = \033[92m
+NC = \033[0m
 
-NAME=libft.a
+# Declaración de variables de compilación
+CC = 	cc
+CFLAGS = -c -Wall -Wextra -Werror -I.
+NAME =	libft.a
+SRC_L =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
+		ft_isalnum.c	ft_isalpha.c	ft_isascii.c \
+		ft_isdigit.c	ft_isprint.c	ft_itoa.c \
+		ft_memchr.c		ft_memcmp.c		ft_memcpy.c \
+		ft_memmove.c	ft_memset.c		ft_putchar_fd.c \
+		ft_putendl_fd.c	ft_putnbr_fd.c	ft_putstr_fd.c \
+		ft_shift.c		ft_split.c		ft_strchr.c \
+		ft_strdup.c		ft_striteri.c	ft_strjoin.c \
+		ft_strlcat.c	ft_strlcpy.c	ft_strlen.c \
+		ft_strmapi.c	ft_strncmp.c	ft_strnstr.c \
+		ft_strrchr.c	ft_strtrim.c	ft_substr.c \
+		ft_tolower.c	ft_toupper.c
 
-SRCS=$(shell find . -type f -name "ft_*.c")
-EXPAN=$(shell find . -type f -name "ft_lst*.c")
-LIBFT=$(filter-out $(EXPAN), $(SRCS))
+SRC_B =	ft_lstadd_back.c				ft_lstadd_front.c \
+		ft_lstclear.c	ft_lstdelone.c	ft_lstiter.c \
+		ft_lstlast.c	ft_lstmap.c		ft_lstnew.c \
+		ft_lstsize.c
 
-LIBFT_OBJS=$(LIBFT:.c=.o)
-BONUS_OBJS=$(EXPAN:.c=.o)
+OBJ_L =	$(SRC_L:.c=.o)
+OBJ_B =	$(SRC_B:.c=.o)
 
-AR=ar rcs
-RM=rm -f
+AR = ar rcs
+RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(LIBFT_OBJS)
-	@echo "Creating library"
-	$(AR) $@ $(LIBFT_OBJS)
+$(NAME): $(OBJ_L)
+	@echo "$(YELLOW)Creating library$(NC)"
+	$(AR) $@ $(OBJ_L)
+	@echo "$(GREEN)<< READY!! 😀 >>$(NC)"
 
 %.o: %.c
-	@echo "Compiling"
+	@echo "$(GREEN)Compiling$(NC)"
 	$(CC) $(CFLAGS) $< -o $@
 
-bonus: $(LIBFT_OBJS) $(BONUS_OBJS)
-	@echo "Creating library + bonus"
-	$(AR) $(NAME) $(BONUS_OBJS)
+bonus: $(OBJ_L) $(OBJ_B)
+	@echo "$(YELLOW)Creating library $(NC)+$(BLUE) bonus$(NC)"
+	$(AR) $(NAME) $(OBJ_B)
 
 clean:
-	@echo "Delete *.o"
-	$(RM) $(LIBFT_OBJS)
-	$(RM) $(BONUS_OBJS)
+	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
+	$(RM) $(OBJ_L)
+	$(RM) $(OBJ_B)
 	$(RM) a.out
 
 fclean: clean
-	@echo "Delete program"
+	@echo "$(RED)Delete program >> 🗑️$(NC)"
 	$(RM) $(NAME)
 
 re: fclean all
