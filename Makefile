@@ -20,8 +20,10 @@ NC = \033[0m
 
 # Declaración de variables de compilación
 CC = 	cc
-CFLAGS = -c -Wall -Wextra -Werror -I.
+CFLAGS = -c -Wall -Wextra -Werror
 NAME =	libft.a
+NAME_B = .bonus
+HEADER = -I libft.h
 SRC_L =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
 		ft_isalnum.c	ft_isalpha.c	ft_isascii.c \
 		ft_isdigit.c	ft_isprint.c	ft_itoa.c \
@@ -35,15 +37,16 @@ SRC_L =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
 		ft_strrchr.c	ft_strtrim.c	ft_substr.c \
 		ft_tolower.c	ft_toupper.c
 
-SRC_B =	ft_lstadd_back.c				ft_lstadd_front.c \
-		ft_lstclear.c	ft_lstdelone.c	ft_lstiter.c \
-		ft_lstlast.c	ft_lstmap.c		ft_lstnew.c \
-		ft_lstsize.c
+SRC_B =	ft_lstadd_back_bonus.c			ft_lstadd_front_bonus.c \
+		ft_lstclear_bonus.c				ft_lstdelone_bonus.c \
+		ft_lstiter_bonus.c				ft_lstlast_bonus.c \
+		ft_lstmap_bonus.c				ft_lstnew_bonus.c \
+		ft_lstsize_bonus.c
 
-OBJ_L =	$(SRC_L:.c=.o)
-OBJ_B =	$(SRC_B:.c=.o)
+OBJ_L = $(SRC_L:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
 
-AR = ar rcs
+AR = ar rc
 RM = rm -f
 
 # Targets e instrucciones
@@ -54,23 +57,26 @@ $(NAME): $(OBJ_L)
 	$(AR) $@ $(OBJ_L)
 	@echo "$(GREEN)<< READY!! 😀 >>$(NC)"
 
-%.o: %.c
+%.o: %.c libft.h
 	@echo "$(GREEN)Compiling$(NC)"
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< -o $@ $(HEADER)
 
-bonus: $(OBJ_L) $(OBJ_B)
+bonus: $(NAME_B)
+
+$(NAME_B) : $(OBJ_L) $(OBJ_B)
 	@echo "$(YELLOW)Creating library $(NC)+$(BLUE) bonus$(NC)"
 	$(AR) $(NAME) $(OBJ_B)
+	@touch $(NAME_B)
 
 clean:
 	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
 	$(RM) $(OBJ_L)
 	$(RM) $(OBJ_B)
-	$(RM) a.out
 
 fclean: clean
 	@echo "$(RED)Delete program >> 🗑️$(NC)"
 	$(RM) $(NAME)
+	$(RM) $(NAME_B)
 
 re: fclean all
 	@echo "Reseting"

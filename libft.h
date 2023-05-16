@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:07:43 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/09 18:50:41 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:32:24 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <errno.h>
-# include <fcntl.h>
 # include <unistd.h>
 
 # define MAX_INT 2147483647

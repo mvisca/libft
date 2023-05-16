@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 11:23:46 by mvisca-g          #+#    #+#             */
-/*   Updated: 2023/05/08 18:08:15 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:44:57 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,17 @@ char	*ft_strtrim(const char *s1, const char *set)
 	if (s1 == NULL || set == NULL)
 		return ((char *)s1);
 	dup = ft_strdup(s1);
-	if (dup == NULL)
-	{
-		errno = ENOMEM;
-		free(dup);
+	if (!dup)
 		return (NULL);
-	}
 	dup = trim_end(trim_ini(dup, set), set);
 	len = ft_strlen(dup);
 	res = (char *) malloc (sizeof(char) * len + 1);
 	if (res == NULL)
 	{
-		errno = ENOMEM;
 		free(dup);
 		return (NULL);
 	}
-	res = memmove(res, dup, ft_strlen(dup) + 1);
+	res = ft_memmove(res, dup, ft_strlen(dup) + 1);
 	free(dup);
 	return (res);
 }
