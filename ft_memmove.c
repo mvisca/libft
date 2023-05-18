@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static void	d_minor_s(size_t *i, size_t *e, size_t n, int *d)
+static void	ft_d_minor_s(size_t *i, size_t *e, size_t n, int *d)
 {
 	*i = 0;
 	*e = n - 1;
 	*d = 1;
 }
 
-static void	s_minor_d(size_t *i, size_t *e, size_t n, int *d)
+static void	ft_s_minor_d(size_t *i, size_t *e, size_t n, int *d)
 {
 	*i = n - 1;
 	*e = 0;
@@ -32,16 +32,17 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t		end;
 	int			delta;
 
-	if (dest == src)
-		return (dest);
-	if (dest < src)
-		d_minor_s(&i, &end, n, &delta);
-	else
-		s_minor_d(&i, &end, n, &delta);
-	while (i != end + delta)
+	if (dest != src)
 	{
-		((char *)dest)[i] = *(((char *) src) + i);
-		i += delta;
+		if (dest < src)
+			ft_d_minor_s(&i, &end, n, &delta);
+		else
+			ft_s_minor_d(&i, &end, n, &delta);
+		while (i != end + delta)
+		{
+			((char *)dest)[i] = *(((char *) src) + i);
+			i += delta;
+		}
 	}
 	return (dest);
 }
