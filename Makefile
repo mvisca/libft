@@ -18,13 +18,20 @@ RED = \033[91m
 GREEN = \033[92m
 NC = \033[0m
 
-# Declaración de variables de compilación
-CC = 	cc
-CFLAGS = -c -Wall -Wextra -Werror
-NAME =	libft.a
-NAME_B = .bonus
-HEADER = -I libft.h
-SRC_L =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
+# Files and directories
+NAME = libft.a
+NAME_BONUS = libft_bonus.a
+
+# Compilation variables
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+# Linkeado
+AR = ar rcs
+RM = rm -fr
+
+# Source Files
+SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
 		ft_isalnum.c	ft_isalpha.c	ft_isascii.c \
 		ft_isdigit.c	ft_isprint.c	ft_itoa.c \
 		ft_memchr.c		ft_memcmp.c		ft_memcpy.c \
@@ -37,49 +44,60 @@ SRC_L =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
 		ft_strrchr.c	ft_strtrim.c	ft_substr.c \
 		ft_tolower.c	ft_toupper.c
 
-SRC_B =	ft_lstadd_back_bonus.c			ft_lstadd_front_bonus.c \
-		ft_lstclear_bonus.c				ft_lstdelone_bonus.c \
-		ft_lstiter_bonus.c				ft_lstlast_bonus.c \
-		ft_lstmap_bonus.c				ft_lstnew_bonus.c \
-		ft_lstsize_bonus.c
+SRCS_BONUS = ft_lstadd_back_bonus.c			ft_lstadd_front_bonus.c \
+			ft_lstclear_bonus.c				ft_lstdelone_bonus.c \
+			ft_lstiter_bonus.c				ft_lstlast_bonus.c \
+			ft_lstmap_bonus.c				ft_lstnew_bonus.c \
+			ft_lstsize_bonus.c
 
-OBJ_L = $(SRC_L:.c=.o)
-OBJ_B = $(SRC_B:.c=.o)
+# Objects
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-AR = ar rc
-RM = rm -f
+# Object Directory
+OBJS_DIR = obj/
+
+# Object 
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_FILE))
+
+# Includes
+INCLUDES = libft.h
+
+# Creates folder for objects
+$(shell mkdir -p $(OBJS_DIR))
 
 # Targets e instrucciones
 all: $(NAME)
 
-$(NAME): $(OBJ_L)
-	@echo "$(YELLOW)Creating library$(NC)"
-	$(AR) $@ $(OBJ_L)
-	@echo "$(GREEN)<< READY!! 😀 >>$(NC)"
+$(NAME): $(OBJS) $(INCLUDES)
+	@echo -n "Linking... "
+	$(AR) $@ $^
+	@echo -n "libfh.h ready! "
 
-%.o: %.c libft.h
-	@echo "$(GREEN)Compiling$(NC)"
-	$(CC) $(CFLAGS) $< -o $@ $(HEADER)
 
-bonus: $(NAME_B)
 
-$(NAME_B) : $(OBJ_L) $(OBJ_B)
-	@echo "$(YELLOW)Creating library $(NC)+$(BLUE) bonus$(NC)"
-	$(AR) $(NAME) $(OBJ_B)
-	@touch $(NAME_B)
+$(OBJS): $(SRCS)
+	@echo -n "Compiling... "
+	$(CC) $(FLAGS) -c $^ -o $@
+
+
+#bonus: $(NAME_BONUS)
+
+#$(NAME_BONUS): $(OBJS) $(OBJS_BONUS)
+#	@$(AR) $(NAME) $^
+#	$(touch .bonus)
 
 clean:
-	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
-	$(RM) $(OBJ_L)
-	$(RM) $(OBJ_B)
+	@echo -n "$(RED)Delete *.o >> 🗑️$(NC)"
+	@$(RM) $(OBJS) 
+	@$(RM) $(OBJS_DIR) #$(OBJS_DIR)/$(OBJS_BONUS)
 
 fclean: clean
-	@echo "$(RED)Delete program >> 🗑️$(NC)"
-	$(RM) $(NAME)
-	$(RM) $(NAME_B)
+	@echo -n "$(RED)Delete program >> 🗑️$(NC)"
+	@$(RM) $(NAME) #$(NAME_BONUS)
 
 re: fclean all
-	@echo "Reseting"
+	@echo -n "Reseting"
 
 #Protección PHONY
 .PHONY: all clean fclean re
