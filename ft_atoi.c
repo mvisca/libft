@@ -12,15 +12,6 @@
 
 #include "libft.h"
 
-static int	get_sign(char c)
-{
-	if (c == '+')
-		return (1);
-	if (c == '-')
-		return (-1);
-	return (0);
-}
-
 static int	ft_isspace(char c)
 {
 	if ((c >= 9 && c <= 13) || (c == 32))
@@ -30,24 +21,23 @@ static int	ft_isspace(char c)
 
 int	ft_atoi(const char *nptr)
 {
-	int		res;
-	int		sign;
-	char	*num;
-
-	num = (char *)nptr;
-	while (ft_isspace(*num))
-		num++;
-	sign = 1;
-	if (get_sign(*num))
-	{
-		if (ft_isdigit(*(num + 1)))
-			sign = get_sign(*(num++));
-		else
-			return (0);
-	}
+	unsigned int	res;
+	int				i;
+	int				sign;
+	
 	res = 0;
-	while (ft_isdigit(*num))
-		res = res * 10 + *(num++) - '0';
+	i = 0;
+	sign = 1;
+	while (ft_isspace(nptr[i]))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		res = (res * 10) + (nptr[i++] - '0');
 	return (res * sign);
 }
 

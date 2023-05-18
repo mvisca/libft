@@ -52,16 +52,16 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 # Files and directories
-TARGET = libft.a
-TARGET_BONUS = .bonus
+NAME = libft.a
+NAME_BONUS = .bonus
 
 # Includes
 INC = -I.
 
 # Targets e instrucciones
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(OBJS) $(HEADER)
+$(NAME): $(OBJS) $(HEADER)
 	@echo "\r$(BLUE)Linking... $(NC)$^"
 	@ar rcs $@ $^
 	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
@@ -70,12 +70,12 @@ $(TARGET): $(OBJS) $(HEADER)
 	@echo "$(GREEN)Compiling... $(NC)$< -> $@\r"
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
-bonus: $(TARGET_BONUS) | $(TARGET)
+bonus: $(NAME_BONUS) | $(NAME)
 
-$(TARGET_BONUS): $(OBJS_BONUS)
+$(NAME_BONUS): $(OBJS_BONUS)
 	@echo "$(BLUE)Linking bonus... $(NC)$^"
-	@ar rcs $(TARGET) $^
-	@touch $(TARGET_BONUS)
+	@ar rcs $(NAME) $^
+	@touch $(NAME_BONUS)
 
 clean:
 	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
@@ -85,7 +85,7 @@ clean:
 
 fclean: clean
 	@echo "$(RED)Delete program >> 🗑️$(NC)"
-	rm -f $(TARGET) $(TARGET_BONUS)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 	@echo -n "Reseting"
