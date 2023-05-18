@@ -12,56 +12,56 @@
 
 #include "libft.h"
 
-static int	set_n(int n)
+static int	ft_abs(int n)
 {
 	if (n < 0)
 		n = -n;
 	return (n);
 }
 
-static char	*get_string(int ncpy, char *res)
+static char	*ft_makeitoa(int ncpy, char *tmp)
 {
 	while (ncpy / 10 > 0)
 	{
-		ft_memmove((res + 1), res, ft_strlen(res));
-		res[0] = ncpy % 10 + '0';
+		ft_memmove((tmp + 1), tmp, ft_strlen(tmp));
+		tmp[0] = ncpy % 10 + '0';
 		ncpy = ncpy / 10;
 	}
-	ft_memmove((res + 1), res, ft_strlen(res));
-	res[0] = ncpy + '0';
-	return (res);
+	ft_memmove((tmp + 1), tmp, ft_strlen(tmp));
+	tmp[0] = ncpy + '0';
+	return (tmp);
 }
 
 char	*ft_itoa(int n)
 {
+	char	*tmp;
 	char	*res;
-	char	*num;
 	int		ncpy;
 
-	if (n == MIN_INT)
+	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	ncpy = set_n(n);
-	res = (char *) calloc (13, sizeof(char));
-	if (res == NULL)
+	ncpy = ft_abs(n);
+	tmp = (char *) ft_calloc (13, sizeof(char));
+	if (tmp == NULL)
 		return (NULL);
-	get_string(ncpy, res);
+	ft_makeitoa(ncpy, tmp);
 	if (n < 0)
 	{
-		ft_memmove(&res[1], res, ft_strlen(res));
-		res[0] = '-';
+		ft_memmove(&tmp[1], tmp, ft_strlen(tmp));
+		tmp[0] = '-';
 	}
-	num = ft_strdup(res);
-	free(res);
-	return (num);
+	res = ft_strdup(tmp);
+	free(tmp);
+	return (res);
 }
 
 /*
 int	main(int ac, char **av)
 {
-	char *num;
+	char *res;
 
-	num = ft_itoa(atoi(av[1]));
-	printf ("Num=%s", num);
+	res = ft_itoa(atoi(av[1]));
+	printf ("Num=%s", res);
 
 	return (0);
 }
