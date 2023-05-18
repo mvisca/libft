@@ -61,12 +61,12 @@ INC = -I.
 # Targets e instrucciones
 all: $(TARGET)
 
-$(TARGET): $(OBJS) $(HEADER)
+$(TARGET): $(OBJS)
 	@echo "$(GREEN)Linking... $(NC)"
 	ar rcs $@ $^
 	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
 
-%.o: %.c 
+%.o: %.c $(HEADER)
 	@echo "$(GREEN)Compiling... $(NC)"
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
@@ -84,7 +84,7 @@ clean:
 
 fclean: clean
 	@echo "$(RED)Delete program >> 🗑️$(NC)"
-	rm -f $(TARGET) $(TARGET_BONUS)
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 	@echo -n "Reseting"
