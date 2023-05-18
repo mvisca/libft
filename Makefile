@@ -11,24 +11,23 @@
 #      #
 # **************************************************************************** #
 
-# Setup de variables con códigos de escape ANSI
-BLUE = \033[94m
-YELLOW = \033[93m
-RED = \033[91m
-GREEN = \033[92m
+# Colores
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
 NC = \033[0m
 
 # Files and directories
 NAME = libft.a
-NAME_BONUS = libft_bonus.a
+NAME_BONUS = .bonus
+
+# Include
+INC = libft.h
 
 # Compilation variables
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
-# Linkeado
-AR = ar rcs
-RM = rm -fr
 
 # Source Files
 SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c \
@@ -51,50 +50,38 @@ SRCS_BONUS = ft_lstadd_back_bonus.c			ft_lstadd_front_bonus.c \
 			ft_lstsize_bonus.c
 
 # Objects
-OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
-# Object Directory
-OBJS_DIR = obj/
-
-# Object 
-OBJS = $(addprefix $(OBJS_DIR), $(OBJS_FILE))
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o) 
 
 # Includes
 INCLUDES = libft.h
-
-# Creates folder for objects
-$(shell mkdir -p $(OBJS_DIR))
 
 # Targets e instrucciones
 all: $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
-	@echo -n "Linking... "
-	$(AR) $@ $^
-	@echo -n "libfh.h ready! "
-
-
+	@echo "$(GREEN)Linking... $(NC)"
+	ar rcs $@ $^
+	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
 
 $(OBJS): $(SRCS)
-	@echo -n "Compiling... "
-	$(CC) $(FLAGS) -c $^ -o $@
+	@echo "$(GREEN)Compiling... $(NC)"
+	$(CC) $(FLAGS) -c $< -o $@
 
+bonus: $(NAME_BONUS)
 
-#bonus: $(NAME_BONUS)
-
-#$(NAME_BONUS): $(OBJS) $(OBJS_BONUS)
+#$(NAME_BONUS): $(OBJS) $(OBJS_BONUS) 
 #	@$(AR) $(NAME) $^
 #	$(touch .bonus)
 
 clean:
-	@echo -n "$(RED)Delete *.o >> 🗑️$(NC)"
-	@$(RM) $(OBJS) 
-	@$(RM) $(OBJS_DIR) #$(OBJS_DIR)/$(OBJS_BONUS)
+	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
+	rm -f $(OBJS) 
+	rm -f $(OBJS_BONUS)
 
 fclean: clean
-	@echo -n "$(RED)Delete program >> 🗑️$(NC)"
-	@$(RM) $(NAME) #$(NAME_BONUS)
+	@echo "$(RED)Delete program >> 🗑️$(NC)"
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: fclean all
 	@echo -n "Reseting"
