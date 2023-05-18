@@ -28,6 +28,7 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 }
 
 /*
+Checked
 int     main(void)
 {
         char    s1[] = "Hola";
