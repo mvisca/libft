@@ -29,6 +29,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 }
 
 /*
+Checked
 int     main(void)
 {
         char    s1[] = "Hola";
