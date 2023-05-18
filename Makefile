@@ -62,24 +62,25 @@ INC = -I.
 all: $(TARGET)
 
 $(TARGET): $(OBJS) $(HEADER)
-	@echo "$(GREEN)Linking... $(NC)"
-	ar rcs $@ $^
+	@echo "\r$(BLUE)Linking... $(NC)$^"
+	@ar rcs $@ $^
 	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
 
 %.o: %.c 
-	@echo "$(GREEN)Compiling... $(NC)"
-	$(CC) $(FLAGS) $(INC) -c $< -o $@
+	@echo "$(GREEN)Compiling... $(NC)$< -> $@\r"
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 bonus: $(TARGET_BONUS) | $(TARGET)
 
 $(TARGET_BONUS): $(OBJS_BONUS)
-	@echo "$(BLUE)Linking bonus... $(NC)"
-	ar rcs $(TARGET) $^
+	@echo "$(BLUE)Linking bonus... $(NC)$^"
+	@ar rcs $(TARGET) $^
 	@touch $(TARGET_BONUS)
 
 clean:
 	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
 	rm -f $(OBJS) 
+	@echo "$(RED)Delete *_bonus.o >> 🗑️$(NC)"
 	rm -f $(OBJS_BONUS)
 
 fclean: clean
