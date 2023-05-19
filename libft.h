@@ -29,7 +29,6 @@ struct				s_list
 typedef struct s_list	t_list;
 
 char	*ft_itoa(int n);
-char	*ft_shift(char *s);
 char	**ft_split(const char *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
