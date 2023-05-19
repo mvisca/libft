@@ -19,9 +19,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (n == 0)
 		return (0);
 	i = 0;
-	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		if (i == n -1)
+		if (i == n - 1)
 			return (0);
 		i++;
 	}
