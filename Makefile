@@ -67,7 +67,7 @@ $(NAME): $(OBJS)
 	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
 
 %.o: %.c $(HEADER) 
-	@echo "$(GREEN)Compiling... $(NC)$< -> $@\r"
+	@echo "$(GREEN)Compiling... $(NC)$< -> $@"
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 bonus: $(NAME_BONUS)
