@@ -14,20 +14,17 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int				stop;
-	unsigned char	ccpy;
-
-	stop = 0;
-	ccpy = (unsigned char)c;
-	while (!stop)
+	while (*s != (unsigned char)c)
 	{
-		if (*s == 0)
-			stop = 1;
-		if (*s == ccpy)
-			return ((char *)s);
+		if (*(s + 1) == '\0')
+		{
+			if (((unsigned char)c) == '\0')
+				return (s + 1);
+			return (NULL);
+		}
 		s++;
 	}
-	return (NULL);
+	return (s);
 }
 
 /*
