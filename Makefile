@@ -61,24 +61,24 @@ INC = -I.
 # Targets e instrucciones
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER)
+$(NAME): $(OBJS)
 	@echo "\r$(BLUE)Linking... $(NC)$^"
 	@ar rcs $@ $^
 	@echo "$(YELLOW)Library libfh.h ready! $(NC)"
 
-%.o: %.c 
+%.o: %.c $(HEADER) 
 	@echo "$(GREEN)Compiling... $(NC)$< -> $@\r"
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
-bonus: $(NAME_BONUS) | $(NAME)
+bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJS_BONUS)
+$(NAME_BONUS): $(OBJS_BONUS) $(OBJS)
 	@echo "$(BLUE)Linking bonus... $(NC)$^"
 	@ar rcs $(NAME) $^
 	@touch $(NAME_BONUS)
 
 clean:
-	@echo "$(RED)Delete *.o >> 🗑️$(NC)"
+	@echo "$(RED)Delete *.o >> 🗑️ $(NC)"
 	rm -f $(OBJS) 
 	@echo "$(RED)Delete *_bonus.o >> 🗑️$(NC)"
 	rm -f $(OBJS_BONUS)
