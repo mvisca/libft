@@ -19,12 +19,12 @@ char	*ft_strchr(const char *s, int c)
 		if (*(s + 1) == '\0')
 		{
 			if (((unsigned char)c) == '\0')
-				return (s + 1);
+				return ((char *)s + 1);
 			return (NULL);
 		}
 		s++;
 	}
-	return (s);
+	return ((char *)s);
 }
 
 /*
