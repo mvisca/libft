@@ -22,6 +22,7 @@ void	ft_putstr_fd(char *s, int fd)
 }
 
 /*
+Chk
 static int	  prep(char *s)
 {
 		int	 	fd;

@@ -33,6 +33,7 @@ void	ft_putnbr_fd(int n, int fd)
 }
 
 /*
+CHK!
 static int	  prep(char *s)
 {
 	int	 fd;
