@@ -19,6 +19,7 @@ void	ft_putendl_fd(char *s, int fd)
 }
 
 /*
+Ck!
 static int	  prep(char *s)
 {
 	int	 fd;

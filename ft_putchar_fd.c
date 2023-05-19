@@ -18,6 +18,7 @@ void	ft_putchar_fd(char c, int fd)
 }
 
 /*
+Checked
 static int	prep(char *s)
 {
 	int	fd;
