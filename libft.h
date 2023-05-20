@@ -15,10 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
-
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
 
 struct				s_list
 {
