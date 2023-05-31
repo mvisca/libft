@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:04:59 by mvisca            #+#    #+#              #
-#    Updated: 2023/05/31 16:59:09 by mvisca           ###   ########.fr        #
+#    Updated: 2023/05/31 17:06:36 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,15 +113,15 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	$(RM)f $(BUILD_DIR) 
-	$(info (RED)Deleting... $(NC)\n$(OBJS)\n$(RED)>> 🗑️$(NC))
+	@$(RM)f $(BUILD_DIR) 
+	@echo "$(RED)Deleting... $(NC)$(notdir $(OBJS)) $(RED)>> 🗑️$(NC)"
 
 fclean: clean
-	$(info (RED)Deleting... $(NC)\n$(NAME)\n$(RED)>> 🗑️$(NC))
-	$(RM) $(NAME)
+	@echo "$(RED)Deleting... $(NC)$(NAME) $(RED)>> 🗑️$(NC)"
+	@$(RM) $(NAME)
 
 re: fclean all
-	@echo -n "Reseting"
+	@echo "Reseting"
 
 #---------------------------------------#
 #	SPECIAL RULES						#
