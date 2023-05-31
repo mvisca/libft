@@ -6,7 +6,7 @@
 #    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 16:04:59 by mvisca            #+#    #+#              #
-#    Updated: 2023/05/31 16:43:50 by mvisca           ###   ########.fr        #
+#    Updated: 2023/05/31 16:59:09 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,14 +102,14 @@ NC = \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(info $(BLUE)Linking...$(NC)\n$^)
+	@echo "$(BLUE)Linking...$(NC)\n$(notdir $^)"
 	@$(AR) $(ARFLAGS) $@ $^
-	$(info $(YELLOW)Library $(NAME) ready!$(NC))
+	@echo "$(YELLOW)Library $(RED)$(NAME) $(YELLOW)ready!$(NC)"
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
-	$(info $(GREEN)Compiling $(NC)$< $(GREEN)-> $(NC)$@)
+	@echo "$(GREEN)Building $(NC)$(notdir $<)$(RED) -> $(NC)$(notdir $@)"
+	@$(DIR_DUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	$(info $(YELLOW)Sources compiled!$(NC))
 -include $(DEPS)
 
 clean:
